@@ -75,7 +75,7 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Фамилия</span>
                                     <span class="js-form__item__content">
-                                        <input type="text" name="last-name" value="" pattern="[А-Яа-я -]{0,60}" required>
+                                        <input type="text" name="last-name" value="" pattern="[А-Яа-я -]{0,20}" required>
                                         <span class="js-field-error"></span>
                                     </span>
                                 </label>
@@ -90,21 +90,22 @@ $education = [
                                     <label class="js-form__item js-slide-hide">
                                         <span class="js-form__item__label">Старая фамилия</span>
                                         <span class="js-form__item__content">
-                                            <input type="text"name="old-last-name"  value="" pattern="[А-Яа-я -]{0,60}">
+                                            <input type="text"name="old-last-name"  value="" pattern="[А-Яа-я -]{0,20}">
                                         </span>
                                     </label>
                                 </span>
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Имя</span>
                                     <span class="js-form__item__content">
-                                    <input type="text" name="first-name" value="" pattern="[А-Яа-я -]{0,60}" required>
+                                    <input type="text" name="first-name" value="" pattern="[А-Яа-я -]{0,20}" required>
                                         <span class="js-field-error"></span>
                                 </span>
                                 </label>
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Отчество</span>
                                     <span class="js-form__item__content">
-                                        <input type="text" name="sure-name" value="" pattern="[А-Яа-я -]{0,60}" required>
+                                        <input type="text" name="patronymic" value="" pattern="[А-Яа-я -]{0,20}" required>
+                                        <span class="js-field-error"></span>
                                     </span>
                                 </label>
                             </div>
@@ -112,14 +113,14 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Фамилия латиницей</span>
                                     <span class="js-form__item__content">
-                                        <input type="text" name="last-name_lat" value="" pattern="[A-Za-z -]{0,60}" required>
+                                        <input type="text" name="last-name_lat" value="" pattern="[A-Za-z -]{0,25}" required>
                                         <span class="js-field-error"></span>
                                     </span>
                                 </label>
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Имя латиницей</span>
                                     <span class="js-form__item__content">
-                                        <input type="text" name="first-name_lat" value="" pattern="[A-Za-z -]{0,60}" required>
+                                        <input type="text" name="first-name_lat" value="" pattern="[A-Za-z -]{0,25}" required>
                                         <span class="js-field-error"></span>
                                     </span>
                                 </label>
@@ -144,7 +145,7 @@ $education = [
                                 <label class="js-form__item" for="">
                                     <span class="js-form__item__label">Дата рождения</span>
                                     <span class="js-form__item__content js-form__item__content_inline">
-                                        <select class="form-item-birthdate" id="form-item-birthdate-days" name="birthdate-days">
+                                        <select class="form-item-birthdate" id="form-item-birthdate-days" name="birthdate-days" required>
                                             <option value=""></option>
 
                                             <?php for ($i = 1; $i <= $date['days']; $i++): ?>
@@ -154,7 +155,7 @@ $education = [
                                             <?php endfor; ?>
 
                                         </select>
-                                        <select class="form-item-birthdate" id="form-item-birthdate-months" name="birthdate-months">
+                                        <select class="form-item-birthdate" id="form-item-birthdate-months" name="birthdate-months" required>
                                             <option value=""></option>
 
                                             <?php foreach ($date['months'] as $k => $month): ?>
@@ -163,7 +164,7 @@ $education = [
                                             <?php endforeach; ?>
 
                                         </select>
-                                        <select class="form-item-birthdate" id="form-item-birthdate-years" name="birthdate-years">
+                                        <select class="form-item-birthdate" id="form-item-birthdate-years" name="birthdate-years" required>
                                             <option value=""></option>
 
                                             <?php for ($year = $date['years']['from']; $year > $date['years']['to']; $year--): ?>
@@ -179,7 +180,7 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Семейное положение</span>
                                         <span class="js-form__item__content">
-                                        <select  id="form-item-marial-status" name="marital-status">
+                                        <select  id="form-item-marial-status" name="marital-status" required>
                                             <option value=""></option>
 
                                             <?php foreach ($maritalStatus as $type): ?>
@@ -197,7 +198,7 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Образование</span>
                                         <span class="js-form__item__content">
-                                        <select name="" id="">
+                                        <select name="education" id="" required>
                                             <option value=""></option>
 
                                             <?php foreach ($education as $text): ?>
@@ -207,7 +208,7 @@ $education = [
                                             <?php endforeach; ?>
 
                                         </select>
-                                            <span class="js-field-error"></span>
+                                        <span class="js-field-error"></span>
                                 </span>
                                 </label>
                             </div>
@@ -216,8 +217,9 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Моб. телефон</span>
                                     <span class="js-form__item__content">
-                                    <input type="tel" name="phone" value="" placeholder="+7" pattern="[0-9 +7]{0,16}" required>
-                                </span>
+                                        <input type="tel" name="phone" value="" placeholder="+7" pattern="[0-9 +7]{0,16}" required>
+                                        <span class="js-field-error"></span>
+                                    </span>
                                 </label>
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Электронная почта</span>
