@@ -290,18 +290,11 @@
                     }
 
                     document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
-                        e.preventDefault();
-                        console.log(app.validateForm(inputs));
+
                     });
                 },
                 validateForm: function (inputs) {
-                    var valid = false;
-
-                    if (this.data.invalidFields.length) {
-                        valid = false;
-                    }
-
-                    return valid;
+                    // будет проверка сервером
                 }
             };
 
