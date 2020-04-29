@@ -129,11 +129,11 @@ $education = [
                                     <span class="js-form__item__label">Пол</span>
                                     <span class="js-form__item__content js-form__item__content_inline">
                                         <label>
-                                            <input type="radio" name="gender" value="Мужской" checked>
+                                            <input type="radio" name="gender" value="male" checked>
                                             <span>Мужской</span>
                                         </label>
                                         <label>
-                                            <input type="radio" name="gender" value="Женский">
+                                            <input type="radio" name="gender" value="female">
                                             <span>Женский</span>
                                         </label>
                                     </span>

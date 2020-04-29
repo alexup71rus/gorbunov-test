@@ -89,6 +89,7 @@
                     } else {
                         inputs = eachAll;
                     }
+                    console.log(inputs);
                     return inputs;
                 },
                 /*
@@ -235,7 +236,11 @@
                                 break;
 
                             case 'gender':
-                                inputs[key].closest('.js-gender').classList.add('hidden');
+                                console.log(this);
+                                inputs[key].addEventListener("check", function (e) {
+                                    // inputs[key].closest('.js-gender').classList.add('hidden');
+                                    app.changeGender();
+                                });
                                 break;
 
                             case 'sure-name':
@@ -254,38 +259,12 @@
                                             'лы': 'male',
                                             'зы': 'female',
                                             'ва': 'female',
-                                        },
-                                        sp = {
-                                            'male': [
-                                                'Женат',
-                                                'Разведён',
-                                                'Холост',
-                                                'Вдовец',
-                                            ],
-                                            'female': [
-                                                'Замужем',
-                                                'Разведена',
-                                                'Не замужем',
-                                                'Вдова',
-                                            ],
-                                            'for_all': [
-                                                'В «гражданском браке»'
-                                            ]
-                                        },
-                                        itemsHTML = '';
+                                        };
 
                                     if (value.length > 2) {
                                         var genderVal = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
                                         if (genderVal) {
-                                            for (gender in sp) {
-                                                if (gender === genderVal || gender === 'for_all') {
-                                                    for (item in sp[gender]) {
-                                                        itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
-                                                    }
-                                                }
-                                            }
-
-                                            inputs['marital-status'].innerHTML = itemsHTML;
+                                            app.changeGender();
                                         }
                                         inputs['gender'].value = genderVal;
                                     }
@@ -303,12 +282,43 @@
                     }
 
                     document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
-
+                        app.validateForm();
                     });
                 },
                 validateForm: function (inputs) {
                     // будет проверка сервером
-                }
+                },
+                changeGender: function () {
+                    var value = sp = {
+                            'male': [
+                                'Женат',
+                                'Разведён',
+                                'Холост',
+                                'Вдовец',
+                            ],
+                            'female': [
+                                'Замужем',
+                                'Разведена',
+                                'Не замужем',
+                                'Вдова',
+                            ],
+                            'for_all': [
+                                'В «гражданском браке»'
+                            ]
+                        },
+                        itemsHTML = '';
+
+                    console.log(gender);
+                    for (gender in sp) {
+                        if (gender === genderVal || gender === 'for_all') {
+                            for (item in sp[gender]) {
+                                itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
+                            }
+                        }
+                    }
+
+                    inputs['marital-status'].innerHTML = itemsHTML;
+                },
             };
 
         app.init();
