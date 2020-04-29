@@ -125,7 +125,7 @@ class Router
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . $file)) {
                 ?><script>
                 <?php
-                echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . $file);
+                echo \Helper\btw(file_get_contents($_SERVER['DOCUMENT_ROOT'] . $file));
                 ?>
                 </script><?php
             } else {
@@ -147,7 +147,7 @@ class Router
             if (file_exists($_SERVER['DOCUMENT_ROOT'] . $file)) {
                 ?><style>
                 <?php
-                echo file_get_contents($_SERVER['DOCUMENT_ROOT'] . $file);
+                echo \Helper\btw(file_get_contents($_SERVER['DOCUMENT_ROOT'] . $file));
                 ?>
                 </style><?php
             } else {
@@ -166,6 +166,6 @@ class Router
     */
     public function requireTemplate(array $filesString)
     {
-
+        // не треба
     }
 }
