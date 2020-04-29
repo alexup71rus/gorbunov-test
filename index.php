@@ -139,6 +139,8 @@ $education = [
                                     </span>
                                     <span class="js-field-error"></span>
                                 </label>
+                            </div>
+                            <div class="js-form__item-container">
                                 <label class="js-form__item" for="">
                                     <span class="js-form__item__label">Дата рождения</span>
                                     <span class="js-form__item__content js-form__item__content_inline">
