@@ -236,6 +236,7 @@
                                 break;
 
                             case 'gender':
+                                inputs[key].closest('.js-gender').classList.add('hidden');
                                 console.log(this);
                                 inputs[key].addEventListener("check", function (e) {
                                     // inputs[key].closest('.js-gender').classList.add('hidden');
