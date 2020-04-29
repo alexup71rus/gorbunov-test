@@ -22,29 +22,6 @@
                     }
 
                     return n_str.join('');
-                }
-            },
-            app = {
-                data: {
-
-                },
-                init: function () {
-                    this.bindForm(document.querySelector('#form'));
-                },
-                serializeForm: function (form, objects = false) {
-                    var queryInputs = form.querySelectorAll('input'),
-                        inputs = {};
-                    if (objects === true) {
-                        queryInputs.forEach(function (e, i) {
-                            var name;
-                            if (name = e.getAttribute('name')) {
-                                inputs[name] = e;
-                            }
-                        });
-                    } else {
-
-                    }
-                    return inputs;
                 },
                 setCursorPosition: function(pos, elem) {
                     elem.focus();
@@ -68,13 +45,37 @@
                         return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? "" : a
                     });
 
-                    if (Number.isInteger(event.key)) {
-                        app.setCursorPosition(element.value.length, element);
+                    if (Number.isInteger(+event.key)) { // для поддержки браузеров
+                        this.setCursorPosition(element.value.length, element);
                     }
 
                     return element.value;
                 },
-                bindForm: function (form) {
+            },
+            app = {
+                data: {
+                    editedLastName: false,
+                    editedFirstName: false,
+                },
+                init: function () {
+                    this.bindForm(document.querySelector('#form'));
+                },
+                serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
+                    var queryInputs = form.querySelectorAll('input'),
+                        inputs = {};
+                    if (objects === true) {
+                        queryInputs.forEach(function (e, i) {
+                            var name;
+                            if (name = e.getAttribute('name')) {
+                                inputs[name] = e;
+                            }
+                        });
+                    } else {
+
+                    }
+                    return inputs;
+                },
+                bindForm: function (form) { // привязка событий (и условия событий)
                     inputs = this.serializeForm(form, true);
                     for (key in inputs) {
                         switch (key) {
@@ -82,7 +83,7 @@
                                 var matrix = "+7 ___ ___-__-__";
 
                                 inputs[key].addEventListener("keyup", function (e) {
-                                    app.mask(e, this, matrix);
+                                    helper.mask(e, this, matrix);
                                 });
 
                                 inputs[key].addEventListener("click", function () {
@@ -96,11 +97,55 @@
                                     }
                                 });
                                 break;
+
+                            case 'email':
+                                // var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/g;
+                                // inputs[key].addEventListener("keyup", function (e) {
+                                //     this.value = this.value.replace(pattern, "");
+                                // });
+                                break;
+
+                            case 'first-name':
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    if (app.data.editedFirstName === false) {
+                                        inputs['first-name_lat'].value = helper.translit(this.value);
+                                    }
+                                });
+                                break;
+
+                            case 'last-name':
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    if (app.data.editedLastName === false) {
+                                        inputs['last-name_lat'].value = helper.translit(this.value);
+                                    }
+                                });
+                                break;
+
+                            case 'first-name_lat':
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    if (this.value) {
+                                        app.data.editedFirstName = true;
+                                        this.value = this.value.replace(/[^A-Za-z -]/g, '');
+                                    } else {
+                                        app.data.editedFirstName = false;
+                                    }
+                                });
+                                break;
+
+                            case 'last-name_lat':
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    if (this.value) {
+                                        app.data.editedLastName = true;
+                                        this.value = this.value.replace(/[^A-Za-z -]/g, '');
+                                    } else {
+                                        app.data.editedLastName = false;
+                                    }
+                                });
+                                break;
                         }
-                        console.log(key);
                     }
                 },
-                validForm: function (form) {
+                validForm: function (form) { //
                     var inputs = form.querySelectorAll('input');
                 },
             };
