@@ -62,18 +62,45 @@
                 },
                 serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
                     var queryInputs = form.querySelectorAll('input'),
+                        querySelects = form.querySelectorAll('select'),
+                        eachAll = [queryInputs, querySelects];
+
                         inputs = {};
                     if (objects === true) {
-                        queryInputs.forEach(function (e, i) {
-                            var name;
-                            if (name = e.getAttribute('name')) {
-                                inputs[name] = e;
-                            }
+                        eachAll.forEach(function (e, i) {
+                            e.forEach(function (e, i) {
+                                var name;
+                                if (name = e.getAttribute('name')) {
+                                    inputs[name] = e;
+                                }
+                            });
                         });
                     } else {
 
                     }
                     return inputs;
+                },
+                bindError: function (elem, pattern, isregexp, text) {
+                    var elItem = elem.closest(".js-form__item");
+                    var elError = elItem.querySelector(".js-field-error");
+                    var valid = false;
+                    if (elItem && elError && text) {
+                        if (isregexp) {
+                            valid = pattern.test(elem.value);
+                        } else {
+                            valid = pattern;
+                        }
+                        if (valid) {
+                            elItem.classList.add('js-error');
+                            elError.innerText = text;
+                        } else {
+                            elItem.classList.remove('js-error');
+                            elError.innerText = '';
+                        }
+                        return true;
+                    } else {
+                        return false;
+                    }
                 },
                 bindForm: function (form) { // привязка событий (и условия событий)
                     inputs = this.serializeForm(form, true);
@@ -84,6 +111,10 @@
 
                                 inputs[key].addEventListener("keyup", function (e) {
                                     helper.mask(e, this, matrix);
+
+                                    if (this.value.length > 16) {
+                                        app.bindError(this, true, false, 'Только цифры, до 16 символов');
+                                    }
                                 });
 
                                 inputs[key].addEventListener("click", function () {
@@ -99,10 +130,14 @@
                                 break;
 
                             case 'email':
-                                // var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/g;
-                                // inputs[key].addEventListener("keyup", function (e) {
-                                //     this.value = this.value.replace(pattern, "");
-                                // });
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    if (this.value.length > 0) {
+                                        app.bindError(this, !/(.*(@).+)/g.test(this.value), false, 'Не сможем связаться по этому адресу');
+                                    } else {
+                                        console.log(this.value);
+                                        app.bindError(this, false, false, '.');
+                                    }
+                                });
                                 break;
 
                             case 'first-name':
@@ -125,7 +160,11 @@
                                 inputs[key].addEventListener("keyup", function (e) {
                                     if (this.value) {
                                         app.data.editedFirstName = true;
-                                        this.value = this.value.replace(/[^A-Za-z -]/g, '');
+                                        if (this.value.length > 25) {
+                                            app.bindError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
+                                        } else {
+                                            app.bindError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
+                                        }
                                     } else {
                                         app.data.editedFirstName = false;
                                     }
@@ -133,12 +172,49 @@
                                 break;
 
                             case 'last-name_lat':
+                                window.ln = inputs[key];
                                 inputs[key].addEventListener("keyup", function (e) {
                                     if (this.value) {
                                         app.data.editedLastName = true;
-                                        this.value = this.value.replace(/[^A-Za-z -]/g, '');
+                                        if (this.value.length > 25) {
+                                            app.bindError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
+                                        } else {
+                                            app.bindError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
+                                        }
                                     } else {
                                         app.data.editedLastName = false;
+                                    }
+                                });
+                                break;
+
+                            case 'birthdate-months':
+                            case 'birthdate-years':
+                                inputs[key].addEventListener("change", function (e) {
+                                    var days = 32 - new Date(inputs['birthdate-years'].value, inputs['birthdate-months'].value, 32).getDate(),
+                                        itemsHTML = '';
+
+                                    for (var day = 1; day < days; day++) {
+                                        itemsHTML += '<option value="'+day+'">'+day+'</option>';
+                                    }
+
+                                    inputs['birthdate-days'].innerHTML = itemsHTML;
+
+                                });
+                                break;
+
+                            case 'sure-name':
+                                inputs[key].addEventListener("keyup", function (e) {
+                                    var value = this.value.trim(),
+                                        genderTable = {
+                                            'ич': 'male',
+                                            'на': 'female',
+                                            'лы': 'male',
+                                            'зы': 'female',
+                                            'ва': 'female',
+                                        };
+                                    if (value.length > 2) {
+                                        inputs['gender'].value = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
+                                        console.log(inputs['gender'].value);
                                     }
                                 });
                                 break;

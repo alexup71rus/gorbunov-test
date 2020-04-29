@@ -70,24 +70,25 @@ h1 {
 #form {
 
 }
-.form__item-container > .form__item {
+.js-form__item-container > .js-form__item {
   padding: 0 0 15px 0;
 }
-.form__item {
+.js-form__item {
 
   display: block;
   font-size: 13px;
   line-height: 20px;
 }
-.form__item-container {
+.js-form__item-container {
+  position: relative;
   margin-bottom: 20px;
   max-width: 475px;
 }
-.form__item-container h3 {
+.js-form__item-container h3 {
   margin: 10px 0 10px 162px;
   letter-spacing: 0.5px;
 }
-.form__item input {
+.js-form__item input {
   max-width: 300px;
   padding: 1px 8px;
   width: 100%;
@@ -97,37 +98,37 @@ h1 {
   font-size: 18px;
   line-height: 20px;
 }
-.form__item input[type="checkbox"] {
+.js-form__item input[type="checkbox"] {
   position: absolute;
   margin: 5px 3px 5px 0;
   width: 15px;
   height: 15px;
   box-shadow: none;
 }
-.form__item input[type="checkbox"] ~ .form__item__label {
+.js-form__item input[type="checkbox"] ~ .js-form__item__label {
   margin-left: 20px;
   padding: 2px 0 0;
   max-width: 316px;
 }
-.form__item__label {
+.js-form__item__label {
   display: inline-block;
   min-width: 154px;
   max-width: 155px;
 }
-.form__item__content {
+.js-form__item__content {
   max-width: 315px;
 }
-.form__item__content:not(.form__item__content_inline) select {
+.js-form__item__content:not(.js-form__item__content_inline) select {
   max-width: 160px;
   width: 100%;
 }
 
-.form__item__content-footer {
+.js-form__item__content-footer {
   margin: 10px 0 10px 160px;
   max-width: 316px;
 }
 
-#form-registration .form__item__submit {
+#form-registration .js-form__item__submit {
   position: relative;
   display: inline-block;
   padding: 15px 20px;
@@ -145,7 +146,7 @@ h1 {
   pointer-events: none;
   transition: .3s;
 }
-#form-registration .form__item__submit::before {
+#form-registration .js-form__item__submit::before {
   content: '';
   position: absolute;
   display: block;
@@ -161,7 +162,7 @@ h1 {
   z-index: 1;
 }
 
-.form__item-label-agree {
+.js-form__item-label-agree {
   display: inline-block;
   margin-left: 20px;
   padding: 2px 0 0;
@@ -185,8 +186,35 @@ h1 {
   pointer-events: all;
 }
 
+.js-field-error {
+  position: absolute;
+  display: none;
+  padding: 3px;
+  padding-right: 20px;
+  margin-left: calc(100% + 20px);
+  width: max-content;
+  min-width: 80px;
+  height: 20px;
+  left: 0;
+  border-radius: 1px 3px 3px 1px;
+  background-color: #EB3B17;
+  color: #fff;
+  font-size: 13px;
+}
+.js-field-error::after {
+  content: '';
+  position: absolute;
+  left: -29px;
+  bottom: 0;
+  border: 13px solid transparent;
+  border-right: 16px solid #EB3B17;
+}
+.js-error .js-field-error {
+  display: inline-block;
+}
 
-/* animation */
+
+  /* animation */
 
 #form-registration .js-slide-hide {
   padding-bottom: 0;
