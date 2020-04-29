@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b63dac3e-234f-4d12-859c-06e5c936d807" name="Default Changelist" comment="">
+    <list default="true" id="b58ec2ed-203b-4f63-bf2c-49720977b2b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/html.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,78 +15,35 @@
   <component name="ComposerSettings">
     <execution />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1WymkMlfKYcUvn0hiXY08YgbaSb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1bDOlfBK9fw0c8azrw7lfyUIZLe" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b63dac3e-234f-4d12-859c-06e5c936d807" name="Default Changelist" comment="" />
-      <created>1580130350776</created>
+      <changelist id="b58ec2ed-203b-4f63-bf2c-49720977b2b4" name="Default Changelist" comment="" />
+      <created>1588163349858</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1580130350776</updated>
-      <workItem from="1580130352348" duration="371000" />
-      <workItem from="1580461851727" duration="19573000" />
-      <workItem from="1580728800251" duration="43027000" />
-      <workItem from="1582201816349" duration="1172000" />
-      <workItem from="1582818641215" duration="626000" />
-      <workItem from="1587989275275" duration="48000" />
-      <workItem from="1587989352977" duration="5156000" />
-      <workItem from="1588067013043" duration="1656000" />
-      <workItem from="1588077189214" duration="2311000" />
-      <workItem from="1588098636923" duration="28509000" />
+      <updated>1588163349858</updated>
+      <workItem from="1588163351944" duration="1319000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="748" y="303" width="424" height="486" key="FileChooserDialogImpl" timestamp="1588080518954">
-      <screen x="0" y="28" width="1920" height="996" />
-    </state>
-    <state x="2668" y="298" key="FileChooserDialogImpl/0.0.1920.1038/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580815691091" />
-    <state x="2668" y="298" width="424" height="484" key="FileChooserDialogImpl/0.0.1920.1044/1920.0.1920.1080@1920.0.1920.1080" timestamp="1582819392422" />
-    <state x="748" y="303" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.996@0.28.1920.996" timestamp="1588080518954" />
-    <state x="0" y="257" width="487" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588158642449">
-      <screen x="0" y="28" width="1920" height="996" />
-    </state>
-    <state x="0" y="257" width="487" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.28.1920.996@0.28.1920.996" timestamp="1588158642449" />
-    <state x="2610" y="454" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1580130426300">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2610" y="454" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1038/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580130426300" />
   </component>
 </project>
