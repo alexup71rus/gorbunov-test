@@ -211,10 +211,22 @@
                             case 'birthdate-years':
                                 inputs[key].addEventListener("change", function (e) {
                                     var days = 32 - new Date(inputs['birthdate-years'].value, inputs['birthdate-months'].value, 32).getDate(),
-                                        itemsHTML = '';
+                                        itemsHTML = '',
+                                        selectedId = inputs['birthdate-days'].value;
+                                        selected = '';
+
+                                    if (days < selectedId) {
+                                        selectedId = days;
+                                    }
 
                                     for (var day = 1; day <= days; day++) {
-                                        itemsHTML += '<option value="'+day+'">'+day+'</option>';
+                                        if (day == selectedId) {
+                                            selected = 'selected';
+                                        } else {
+                                            selected = '';
+                                        }
+                                        console.log(selected);
+                                        itemsHTML += '<option value="'+day+'" '+selected+'>'+day+'</option>';
                                     }
 
                                     inputs['birthdate-days'].innerHTML = itemsHTML;
