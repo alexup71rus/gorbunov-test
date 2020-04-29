@@ -239,7 +239,6 @@
                                 inputs[key].closest('.js-gender').classList.add('hidden');
                                 console.log(this);
                                 inputs[key].addEventListener("check", function (e) {
-                                    // inputs[key].closest('.js-gender').classList.add('hidden');
                                     app.changeGender();
                                 });
                                 break;
@@ -265,7 +264,7 @@
                                     if (value.length > 2) {
                                         var genderVal = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
                                         if (genderVal) {
-                                            app.changeGender();
+                                            app.changeGender(genderVal);
                                         }
                                         inputs['gender'].value = genderVal;
                                     }
@@ -289,7 +288,7 @@
                 validateForm: function (inputs) {
                     // будет проверка сервером
                 },
-                changeGender: function () {
+                changeGender: function (genderVal) {
                     var value = sp = {
                             'male': [
                                 'Женат',
@@ -309,7 +308,6 @@
                         },
                         itemsHTML = '';
 
-                    console.log(gender);
                     for (gender in sp) {
                         if (gender === genderVal || gender === 'for_all') {
                             for (item in sp[gender]) {
