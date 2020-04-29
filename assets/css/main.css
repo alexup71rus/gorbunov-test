@@ -263,3 +263,20 @@ h1 {
   opacity: 1;
   pointer-events: all;
 }
+
+@media screen and (max-width: 870px) {
+  body {
+    min-width: 650px;
+  }
+  h1 {
+    text-align: center;
+  }
+  .content {
+    display: block;
+    margin: 0 auto;
+    max-width: 640px;
+  }
+  .r-sidebar {
+    display: none;
+  }
+}
