@@ -33,6 +33,7 @@ h1 {
   max-width: 600px;
   width: 100%;
   background-color: #f7d3d3;
+  background-image: linear-gradient(#edd2d1 0%, #f7d3d3 20%, #feeae9 85%);
 }
 
 .form__container_footer {
@@ -102,7 +103,7 @@ h1 {
 }
 .js-form__item input[type="checkbox"] {
   position: absolute;
-  margin: 5px 3px 5px 0;
+  margin: 2px 3px 5px 0;
   width: 15px;
   height: 15px;
   box-shadow: none;
@@ -110,6 +111,10 @@ h1 {
 .js-form__item input[type="checkbox"] ~ .js-form__item__label {
   margin-left: 20px;
   padding: 2px 0 0;
+  max-width: 316px;
+}
+.form-item__label-check {
+  margin-left: 20px;
   max-width: 316px;
 }
 .js-form__item input[type="radio"] {
@@ -141,6 +146,10 @@ h1 {
   max-width: 155px;
 }
 
+.js-form__item_chk {
+  margin-top: -9px;
+}
+
 .js-form__item__content-footer {
   margin: 10px 0 10px 160px;
   max-width: 316px;
@@ -154,13 +163,15 @@ h1 {
   max-width: 280px;
   width: 100%;
   border: 0;
+  border-radius: 18px;
   background: #eee;
   box-shadow: 0px 4px 7px rgba(37, 40, 57, 0.27);
-  border-radius: 18px;
+  text-shadow: 0 1px 0 #fff;
   font-weight: 900;
   letter-spacing: 1.2px;
   font-size: 23px;
   color: #A1A2A7;
+  cursor: pointer;
   pointer-events: none;
   transition: .3s;
 }
@@ -245,12 +256,7 @@ h1 {
   pointer-events: none;
   transition: .3s;
 }
-/*#form-registration .js-slide-hide_active {
-  padding-bottom: 13px;
-  height: 30px;
-  opacity: 1;
-  pointer-events: all;
-}*/
+
 #form-registration #form-item-cln-chk:checked ~ .js-slide-hide {
   padding-top: 13px;
   height: 30px;

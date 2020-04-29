@@ -75,23 +75,25 @@ $education = [
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Фамилия</span>
                                     <span class="js-form__item__content">
-                                    <input type="text" name="last-name" value="" pattern="[А-Яа-я -]{0,60}" requiredfalse>
+                                        <input type="text" name="last-name" value="" pattern="[А-Яа-я -]{0,60}" requiredfalse>
                                         <span class="js-field-error"></span>
-                                </span>
-                                    <label class="js-form__item">
-                                        <span class="js-form__item__label"></span>
-                                        <span class="js-form__item__content">
-                                        <input id="form-item-cln-chk" type="checkbox" value="Y">
-                                        <span class="js-form__item__label">ранее менялась</span>
-                                        <label class="js-form__item js-slide-hide" for="form-item-cln-chk">
-                                            <span class="js-form__item__label"></span>
-                                            <span class="js-form__item__content">
-                                                <input type="text"name="old-last-name"  value="" pattern="[А-Яа-я -]{0,60}">
-                                            </span>
-                                        </label>
                                     </span>
-                                    </label>
                                 </label>
+                                <span class="js-form__item js-form__item_chk">
+                                    <span class="js-form__item__content">
+                                        <span class="js-form__item__label"></span>
+                                    </span>
+                                    <input id="form-item-cln-chk" type="checkbox" value="Y">
+                                    <label class="form-item__label-check" for="form-item-cln-chk">
+                                        ранее менялась
+                                    </label>
+                                    <label class="js-form__item js-slide-hide">
+                                        <span class="js-form__item__label">Старая фамилия</span>
+                                        <span class="js-form__item__content">
+                                            <input type="text"name="old-last-name"  value="" pattern="[А-Яа-я -]{0,60}">
+                                        </span>
+                                    </label>
+                                </span>
                                 <label class="js-form__item">
                                     <span class="js-form__item__label">Имя</span>
                                     <span class="js-form__item__content">
