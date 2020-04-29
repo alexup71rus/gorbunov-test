@@ -75,7 +75,7 @@ $education = [
                                 <label class="form__item">
                                     <span class="form__item__label">Фамилия</span>
                                     <span class="form__item__content">
-                                    <input type="text" name="last-name" value="">
+                                    <input type="text" name="last-name" value="" pattern="[А-Яа-я -]{0,60}" requiredfalse>
                                 </span>
                                     <label class="form__item">
                                         <span class="form__item__label"></span>
@@ -85,7 +85,7 @@ $education = [
                                         <label class="form__item js-slide-hide" for="form-item-cln-chk">
                                             <span class="form__item__label"></span>
                                             <span class="form__item__content">
-                                                    <input type="text" value="">
+                                                    <input type="text" value="" pattern="[А-Яа-я -]{0,60}">
                                                 </span>
                                         </label>
                                     </span>
@@ -100,13 +100,13 @@ $education = [
                                 <label class="form__item">
                                     <span class="form__item__label">Имя</span>
                                     <span class="form__item__content">
-                                    <input type="text" name="first-name" value="">
+                                    <input type="text" name="first-name" value="" pattern="[А-Яа-я -]{0,60}" requiredfalse>
                                 </span>
                                 </label>
                                 <label class="form__item">
                                     <span class="form__item__label">Отчество</span>
                                     <span class="form__item__content">
-                                    <input type="text" name="sure-name" value="">
+                                    <input type="text" name="sure-name" value="" pattern="[А-Яа-я -]{0,60}" requiredfalse>
                                 </span>
                                 </label>
                             </div>
@@ -114,13 +114,13 @@ $education = [
                                 <label class="form__item">
                                     <span class="form__item__label">Фамилия латиницей</span>
                                     <span class="form__item__content">
-                                    <input type="text" name="last-name_lat" value="">
+                                    <input type="text" name="last-name_lat" value="" pattern="[A-Za-z -]{0,60}" requiredfalse>
                                 </span>
                                 </label>
                                 <label class="form__item">
                                     <span class="form__item__label">Имя латиницей</span>
                                     <span class="form__item__content">
-                                    <input type="text" name="first-name_lat" value="">
+                                    <input type="text" name="first-name_lat" value="" pattern="[A-Za-z -]{0,60}" requiredfalse>
                                 </span>
                                 </label>
                             </div>
@@ -193,13 +193,13 @@ $education = [
                                 <label class="form__item">
                                     <span class="form__item__label">Моб. телефон</span>
                                     <span class="form__item__content">
-                                    <input type="text" value="" placeholder="+7">
+                                    <input type="tel" value="" placeholder="+7" pattern="[0-9]{0,16}" requiredfalse>
                                 </span>
                                 </label>
                                 <label class="form__item">
                                     <span class="form__item__label">Электронная почта</span>
                                     <span class="form__item__content">
-                                    <input type="text" value="">
+                                    <input type="email" value="" requiredfalse>
                                 </span>
                                 </label>
                             </div>
