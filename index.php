@@ -85,7 +85,7 @@ $education = [
                                         <label class="form__item js-slide-hide" for="form-item-cln-chk">
                                             <span class="form__item__label"></span>
                                             <span class="form__item__content">
-                                                    <input type="text" value="" pattern="[А-Яа-я -]{0,60}">
+                                                    <input type="text"name="old-last-name"  value="" pattern="[А-Яа-я -]{0,60}">
                                                 </span>
                                         </label>
                                     </span>
@@ -193,13 +193,13 @@ $education = [
                                 <label class="form__item">
                                     <span class="form__item__label">Моб. телефон</span>
                                     <span class="form__item__content">
-                                    <input type="tel" value="" placeholder="+7" pattern="[0-9]{0,16}" requiredfalse>
+                                    <input type="tel" name="phone" value="" placeholder="+7" pattern="[0-9 +7]{0,16}" requiredfalse>
                                 </span>
                                 </label>
                                 <label class="form__item">
                                     <span class="form__item__label">Электронная почта</span>
                                     <span class="form__item__content">
-                                    <input type="email" value="" requiredfalse>
+                                    <input type="email" name="email" value="" requiredfalse>
                                 </span>
                                 </label>
                             </div>
