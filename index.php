@@ -145,6 +145,7 @@ $education = [
                                     <span class="js-form__item__label">Дата рождения</span>
                                     <span class="js-form__item__content js-form__item__content_inline">
                                         <select class="form-item-birthdate" id="form-item-birthdate-days" name="birthdate-days">
+                                            <option value=""></option>
 
                                             <?php for ($i = 1; $i <= $date['days']; $i++): ?>
 
@@ -154,6 +155,7 @@ $education = [
 
                                         </select>
                                         <select class="form-item-birthdate" id="form-item-birthdate-months" name="birthdate-months">
+                                            <option value=""></option>
 
                                             <?php foreach ($date['months'] as $k => $month): ?>
                                                 <option value="<?= $k ?>"><?= $month ?></option>
@@ -162,6 +164,7 @@ $education = [
 
                                         </select>
                                         <select class="form-item-birthdate" id="form-item-birthdate-years" name="birthdate-years">
+                                            <option value=""></option>
 
                                             <?php for ($year = $date['years']['from']; $year > $date['years']['to']; $year--): ?>
 
@@ -177,6 +180,7 @@ $education = [
                                     <span class="js-form__item__label">Семейное положение</span>
                                         <span class="js-form__item__content">
                                         <select  id="form-item-marial-status" name="marital-status">
+                                            <option value=""></option>
 
                                             <?php foreach ($maritalStatus as $type): ?>
                                                 <?php foreach ($type as $text): ?>
@@ -194,6 +198,7 @@ $education = [
                                     <span class="js-form__item__label">Образование</span>
                                         <span class="js-form__item__content">
                                         <select name="" id="">
+                                            <option value=""></option>
 
                                             <?php foreach ($education as $text): ?>
 
