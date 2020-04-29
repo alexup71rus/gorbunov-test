@@ -224,7 +224,7 @@ $education = [
                             <div class="js-form__item__content-footer">
                                 <input id="form-item-final-chk" type="checkbox" name="agree" value="Y">
                                 <label class="js-form__item-label-agree" for="form-item-final-chk">Ставя эту галочку, я подтверждаю, что поставил её в трезвом уме и твёрдой памяти.</label>
-                                <button class="js-form__item__submit" id="form-item-final-btn">Полететь на Марс</button>
+                                <button class="js-form__item__submit" id="js-form-item-final-btn">Полететь на Марс</button>
                             </div>
                         </div>
                     </form>

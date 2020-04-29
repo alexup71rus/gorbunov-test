@@ -1,6 +1,9 @@
 (function() {
     try {
         var helper = {
+                /*
+                * Транслит русского текста на английский
+                */
                 translit: function ( str ) {
                     var ru = {
                         'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
@@ -23,6 +26,9 @@
 
                     return n_str.join('');
                 },
+                /*
+                * Установить позицию курсора в поле
+                */
                 setCursorPosition: function(pos, elem) {
                     elem.focus();
                     if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
@@ -34,6 +40,9 @@
                         range.select()
                     }
                 },
+                /*
+                * Установить маску на поле
+                */
                 mask: function(event, element, matrix) {
                     var i = 0,
                         def = matrix.replace(/\D/g, ""),
@@ -54,10 +63,11 @@
             },
             app = {
                 data: {
+                    invalidFields: [],
                     editedLastName: false,
                     editedFirstName: false,
                 },
-                init: function () {
+                init: function () { // старт программы
                     this.bindForm(document.querySelector('#form'));
                 },
                 serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
@@ -76,11 +86,14 @@
                             });
                         });
                     } else {
-
+                        inputs = eachAll;
                     }
                     return inputs;
                 },
-                bindError: function (elem, pattern, isregexp, text) {
+                /*
+                * Поках ошибок
+                */
+                showError: function (elem, pattern, isregexp, text) {
                     var elItem = elem.closest(".js-form__item");
                     var elError = elItem.querySelector(".js-field-error");
                     var valid = false;
@@ -91,18 +104,25 @@
                             valid = pattern;
                         }
                         if (valid) {
+                            elem.classList.add('js-wrong');
                             elItem.classList.add('js-error');
                             elError.innerText = text;
+                            app.data.invalidFields[elem.getAttribute('name')] = false;
                         } else {
+                            elem.classList.remove('js-wrong');
                             elItem.classList.remove('js-error');
                             elError.innerText = '';
+                            delete app.data.invalidFields[elem.getAttribute('name')];
                         }
                         return true;
                     } else {
                         return false;
                     }
                 },
-                bindForm: function (form) { // привязка событий (и условия событий)
+                /*
+                * привязка событий (и условия событий, не стал выносить)
+                */
+                bindForm: function (form) {
                     inputs = this.serializeForm(form, true);
                     for (key in inputs) {
                         switch (key) {
@@ -113,7 +133,7 @@
                                     helper.mask(e, this, matrix);
 
                                     if (this.value.length > 16) {
-                                        app.bindError(this, true, false, 'Только цифры, до 16 символов');
+                                        app.showError(this, true, false, 'Только цифры, до 16 символов');
                                     }
                                 });
 
@@ -132,9 +152,9 @@
                             case 'email':
                                 inputs[key].addEventListener("keyup", function (e) {
                                     if (this.value.length > 0) {
-                                        app.bindError(this, !/(.*(@).+)/g.test(this.value), false, 'Не сможем связаться по этому адресу');
+                                        app.showError(this, !/(.*(@).+)/g.test(this.value), false, 'Не сможем связаться по этому адресу');
                                     } else {
-                                        app.bindError(this, false, false, '.');
+                                        app.showError(this, false, false, '.');
                                     }
                                 });
                                 break;
@@ -160,9 +180,9 @@
                                     if (this.value) {
                                         app.data.editedFirstName = true;
                                         if (this.value.length > 25) {
-                                            app.bindError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
+                                            app.showError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
                                         } else {
-                                            app.bindError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
+                                            app.showError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
                                         }
                                     } else {
                                         app.data.editedFirstName = false;
@@ -176,9 +196,9 @@
                                     if (this.value) {
                                         app.data.editedLastName = true;
                                         if (this.value.length > 25) {
-                                            app.bindError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
+                                            app.showError(this, true, false, 'Вы превысили максимальное значение поля в 25 символов');
                                         } else {
-                                            app.bindError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
+                                            app.showError(this, /[^A-Za-z -]/g, true, 'Допускается ввод только латиницей');
                                         }
                                     } else {
                                         app.data.editedLastName = false;
@@ -192,7 +212,7 @@
                                     var days = 32 - new Date(inputs['birthdate-years'].value, inputs['birthdate-months'].value, 32).getDate(),
                                         itemsHTML = '';
 
-                                    for (var day = 1; day < days; day++) {
+                                    for (var day = 1; day <= days; day++) {
                                         itemsHTML += '<option value="'+day+'">'+day+'</option>';
                                     }
 
@@ -258,12 +278,31 @@
                                     }
                                 });
                                 break;
+
+                            case 'submit':
+                                console.log(inputs[key]);
+                                inputs[key].addEventListener("click", function (e) {
+                                    console.log(app.validateForm());
+                                    return false;
+                                });
+                                break;
                         }
                     }
+
+                    document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
+                        e.preventDefault();
+                        console.log(app.validateForm(inputs));
+                    });
                 },
-                validForm: function (form) { //
-                    var inputs = form.querySelectorAll('input');
-                },
+                validateForm: function (inputs) {
+                    var valid = false;
+
+                    if (this.data.invalidFields.length) {
+                        valid = false;
+                    }
+
+                    return valid;
+                }
             };
 
         app.init();

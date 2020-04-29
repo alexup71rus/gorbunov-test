@@ -124,17 +124,21 @@ h1 {
   padding: 2px 0 0;
   max-width: 316px;
 }
-.js-form__item__label {
-  display: inline-block;
-  min-width: 154px;
-  max-width: 155px;
-}
 .js-form__item__content {
   max-width: 315px;
+}
+.js-form__item__content .js-wrong, .js-form__item__content .js-wrong {
+  box-shadow: inset 0px 1px 1px rgba(39, 39, 39, 0.25), 0 0 0 1px red;
 }
 .js-form__item__content:not(.js-form__item__content_inline) select {
   max-width: 160px;
   width: 100%;
+}
+
+.js-form__item__label {
+  display: inline-block;
+  min-width: 154px;
+  max-width: 155px;
 }
 
 .js-form__item__content-footer {
@@ -193,7 +197,7 @@ h1 {
   box-shadow: none;
 }
 
-#form-item-final-chk:checked ~ #form-item-final-btn {
+#form-item-final-chk:checked ~ #js-form-item-final-btn {
   background: linear-gradient(180deg, #F3CA44 0%, #EDC234 59.12%, #EEC337 88.95%, #F1D579 100%);
   box-shadow: 0px 4px 7px rgba(37, 40, 57, 0.27);
   color: #000;
