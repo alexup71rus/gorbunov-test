@@ -1,4 +1,22 @@
 <?php
+$translitTable = [
+    'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
+    'е' => 'e', 'ё' => 'e', 'ж' => 'zh', 'з' => 'z', 'и' => 'i',
+    'к' => 'k', 'л' => 'l', 'м' => 'm', 'н' => 'n', 'о' => 'o',
+    'п' => 'p', 'р' => 'r', 'с' => 's', 'т' => 't', 'у' => 'u',
+    'ф' => 'f', 'х' => 'kh', 'ц' => 'ts', 'ч' => 'ch', 'ш' => 'sh',
+    'щ' => 'shch', 'ы' => 'y', 'э' => 'e', 'ю' => 'iu', 'я' => 'ia',
+    'ъ' => 'ie'
+];
+
+$genderTable = [
+    'ич' => 'male',
+    'на' => 'female',
+    'лы' => 'male',
+    'зы' => 'female',
+    'ва' => 'female',
+];
+
 $date = [
     'days' => 31,
     'months' => [
@@ -50,8 +68,15 @@ $education = [
 \Router::requireHeader('main_theme', [
     'css' => [
         '/assets/css/main.css'
-    ]
+    ],
+    'title' => 'Заявка на экскурсионный полёт на Марс',
 ]);
+
+if (isset($_REQUEST['ajax']) && $_REQUEST['ajax'] === 'Y') {
+    var_dump('isAjax');
+
+    die();
+}
 ?>
 <header>
     <div class="container">
@@ -240,9 +265,15 @@ $education = [
         </div>
     </div>
 </section>
+
+<script>
+    var arGenderTable = JSON.parse('<?= json_encode($genderTable) ?>'),
+        arSP = JSON.parse('<?= json_encode($maritalStatus) ?>'),
+        arTranslit = JSON.parse('<?= json_encode($translitTable) ?>');
+</script>
 <?php
 \Router::requireFooter('main_theme', [
-    'css' => [
+    'js' => [
         '/assets/js/app.js'
     ]
 ]);

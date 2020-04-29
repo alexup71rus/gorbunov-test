@@ -5,15 +5,7 @@
                 * Транслит русского текста на английский
                 */
                 translit: function ( str ) {
-                    var ru = {
-                        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
-                        'е': 'e', 'ё': 'e', 'ж': 'zh', 'з': 'z', 'и': 'i',
-                        'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
-                        'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
-                        'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh',
-                        'щ': 'shch', 'ы': 'y', 'э': 'e', 'ю': 'iu', 'я': 'ia',
-                        'ъ': 'ie'
-                    }, n_str = [];
+                    var ru = window.arTranslit, n_str = [];
 
                     str = str.replace(/[ь]+/g, '').replace(/й/g, 'i');
 
@@ -310,13 +302,7 @@
                                 });
                                 inputs[key].addEventListener("keyup", function (e) {
                                     var value = this.value.trim(),
-                                        genderTable = { // будет браться с сервера
-                                            'ич': 'male',
-                                            'на': 'female',
-                                            'лы': 'male',
-                                            'зы': 'female',
-                                            'ва': 'female',
-                                        };
+                                        genderTable = window.arGenderTable;
 
                                     app.showError(this, [
                                         {
@@ -356,23 +342,7 @@
                     // будет проверка сервером
                 },
                 changeGender: function (genderVal) {
-                    var value = sp = {
-                            'male': [
-                                'Женат',
-                                'Разведён',
-                                'Холост',
-                                'Вдовец',
-                            ],
-                            'female': [
-                                'Замужем',
-                                'Разведена',
-                                'Не замужем',
-                                'Вдова',
-                            ],
-                            'for_all': [
-                                'В «гражданском браке»'
-                            ]
-                        },
+                    var value = sp = window.arSP,
                         itemsHTML = '';
 
                     for (gender in sp) {
