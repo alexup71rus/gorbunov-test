@@ -138,7 +138,6 @@
                                 inputs[key].addEventListener("keyup", function (e) {
                                     helper.mask(e, this, matrix);
 
-                                    console.log(this.value.length);
                                     app.showError(this, [
                                         {
                                             result: (this.value.length > 16),
