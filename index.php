@@ -70,7 +70,6 @@ $education = [
                 <div class="content">
                     <noscript>У Вас отключен javascript, некоторые функции сайта могут не работать.</noscript>
                     <form action="" id="form">
-<!--                        <input type="hidden" name="gender" value="male">-->
                         <div class="form__container">
                             <div class="js-form__item-container">
                                 <label class="js-form__item">
@@ -124,7 +123,7 @@ $education = [
                                 </label>
                             </div>
                             <div class="js-form__item-container">
-                                <label class="js-form__item js-gender" name="gender" for="">
+                                <label class="js-form__item js-gender" for="">
                                     <span class="js-form__item__label">Пол</span>
                                     <span class="js-form__item__content js-form__item__content_inline">
                                         <label>

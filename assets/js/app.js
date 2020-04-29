@@ -134,7 +134,6 @@
                                     if (this.value.length > 0) {
                                         app.bindError(this, !/(.*(@).+)/g.test(this.value), false, 'Не сможем связаться по этому адресу');
                                     } else {
-                                        console.log(this.value);
                                         app.bindError(this, false, false, '.');
                                     }
                                 });
@@ -203,7 +202,6 @@
                                 break;
 
                             case 'gender':
-                                console.log(inputs[key])
                                 inputs[key].closest('.js-gender').classList.add('hidden');
                                 break;
 
