@@ -202,10 +202,22 @@
                                 });
                                 break;
 
+                            case 'gender':
+                                console.log(inputs[key])
+                                inputs[key].closest('.js-gender').classList.add('hidden');
+                                break;
+
                             case 'sure-name':
+                                inputs[key].addEventListener("blur", function (e) {
+                                    if (inputs['gender'].value !== 'undefined') {
+                                        inputs['gender'].closest('.js-gender').classList.add('hidden');
+                                    } else {
+                                        inputs['gender'].closest('.js-gender').classList.remove('hidden');
+                                    }
+                                });
                                 inputs[key].addEventListener("keyup", function (e) {
                                     var value = this.value.trim(),
-                                        genderTable = {
+                                        genderTable = { // будет браться с сервера
                                             'ич': 'male',
                                             'на': 'female',
                                             'лы': 'male',
@@ -233,22 +245,18 @@
 
                                     if (value.length > 2) {
                                         var genderVal = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
-                                        if (!genderVal) {
-                                            genderVal = 'male';
-                                        }
-
-                                        inputs['gender'].value = genderVal;
-
-                                        for (gender in sp) {
-                                            if (gender === genderVal || gender === 'for_all') {
-                                                for (item in sp[gender]) {
-                                                    itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
+                                        if (genderVal) {
+                                            for (gender in sp) {
+                                                if (gender === genderVal || gender === 'for_all') {
+                                                    for (item in sp[gender]) {
+                                                        itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
+                                                    }
                                                 }
                                             }
+
+                                            inputs['marital-status'].innerHTML = itemsHTML;
                                         }
-
-
-                                        inputs['marital-status'].innerHTML = itemsHTML;
+                                        inputs['gender'].value = genderVal;
                                     }
                                 });
                                 break;

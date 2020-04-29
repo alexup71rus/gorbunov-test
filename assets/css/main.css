@@ -7,8 +7,7 @@
   display: block;
 }
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
 }
 .container {
   margin: 0 auto;
@@ -110,6 +109,18 @@ h1 {
 }
 .js-form__item input[type="checkbox"] ~ .js-form__item__label {
   margin-left: 20px;
+  padding: 2px 0 0;
+  max-width: 316px;
+}
+.js-form__item input[type="radio"] {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  box-shadow: none;
+}
+.js-form__item input[type="radio"] ~ span {
+  margin-left: 2px;
+  margin-right: 5px;
   padding: 2px 0 0;
   max-width: 316px;
 }
