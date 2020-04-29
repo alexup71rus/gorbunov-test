@@ -136,7 +136,7 @@ h1 {
   box-shadow: inset 0px 1px 1px rgba(39, 39, 39, 0.25), 0 0 0 1px red;
 }
 .js-form__item__content:not(.js-form__item__content_inline) select {
-  max-width: 160px;
+  max-width: 165px;
   width: 100%;
 }
 
