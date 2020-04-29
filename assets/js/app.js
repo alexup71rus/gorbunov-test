@@ -67,6 +67,7 @@
                     invalidFields: [],
                     editedLastName: false,
                     editedFirstName: false,
+                    gender: 'male',
                 },
                 init: function () { // старт программы
                     this.bindForm(document.querySelector('#form'));
@@ -89,7 +90,6 @@
                     } else {
                         inputs = eachAll;
                     }
-                    console.log(inputs);
                     return inputs;
                 },
                 /*
@@ -226,7 +226,6 @@
                                         } else {
                                             selected = '';
                                         }
-                                        console.log(selected);
                                         itemsHTML += '<option value="'+day+'" '+selected+'>'+day+'</option>';
                                     }
 
@@ -237,15 +236,17 @@
 
                             case 'gender':
                                 inputs[key].closest('.js-gender').classList.add('hidden');
-                                console.log(this);
-                                inputs[key].addEventListener("check", function (e) {
-                                    app.changeGender();
+                                document.querySelectorAll('[name="gender"]').forEach(function (el) {
+                                    el.addEventListener("click", function (e) {
+                                        app.data.gender = this.value;
+                                        app.changeGender(this.value);
+                                    });
                                 });
                                 break;
 
                             case 'sure-name':
                                 inputs[key].addEventListener("blur", function (e) {
-                                    if (inputs['gender'].value !== 'undefined') {
+                                    if (app.data.gender) {
                                         inputs['gender'].closest('.js-gender').classList.add('hidden');
                                     } else {
                                         inputs['gender'].closest('.js-gender').classList.remove('hidden');
@@ -266,13 +267,12 @@
                                         if (genderVal) {
                                             app.changeGender(genderVal);
                                         }
-                                        inputs['gender'].value = genderVal;
+                                        app.data.gender = genderVal;
                                     }
                                 });
                                 break;
 
                             case 'submit':
-                                console.log(inputs[key]);
                                 inputs[key].addEventListener("click", function (e) {
                                     console.log(app.validateForm());
                                     return false;

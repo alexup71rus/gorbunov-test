@@ -136,7 +136,6 @@ $education = [
                                             <input type="radio" name="gender" value="female">
                                             <span>Женский</span>
                                         </label>
-                                        <input type="hidden" name="gender" value="male" checked>
                                     </span>
                                     <span class="js-field-error"></span>
                                 </label>
