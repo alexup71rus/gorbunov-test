@@ -88,6 +88,9 @@ h1 {
   margin: 10px 0 10px 162px;
   letter-spacing: 0.5px;
 }
+.js-form__item select {
+  padding: 4px 5px;
+}
 .js-form__item input {
   max-width: 300px;
   padding: 1px 8px;

@@ -211,10 +211,44 @@
                                             'лы': 'male',
                                             'зы': 'female',
                                             'ва': 'female',
-                                        };
+                                        },
+                                        sp = {
+                                            'male': [
+                                                'Женат',
+                                                'Разведён',
+                                                'Холост',
+                                                'Вдовец',
+                                            ],
+                                            'female': [
+                                                'Замужем',
+                                                'Разведена',
+                                                'Не замужем',
+                                                'Вдова',
+                                            ],
+                                            'for_all': [
+                                                'В «гражданском браке»'
+                                            ]
+                                        },
+                                        itemsHTML = '';
+
                                     if (value.length > 2) {
-                                        inputs['gender'].value = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
-                                        console.log(inputs['gender'].value);
+                                        var genderVal = genderTable[ this.value.substr(this.value.length-2, this.value.length).toLowerCase() ];
+                                        if (!genderVal) {
+                                            genderVal = 'male';
+                                        }
+
+                                        inputs['gender'].value = genderVal;
+
+                                        for (gender in sp) {
+                                            if (gender === genderVal || gender === 'for_all') {
+                                                for (item in sp[gender]) {
+                                                    itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
+                                                }
+                                            }
+                                        }
+
+
+                                        inputs['marital-status'].innerHTML = itemsHTML;
                                     }
                                 });
                                 break;
