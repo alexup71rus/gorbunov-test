@@ -78,9 +78,13 @@ if (isset($_REQUEST['ajax']) && $_REQUEST['ajax'] === 'Y') {
 
 if (count($_REQUEST)) {
     foreach ($arFields as $itemName => &$itemContent) {
-//        if ($itemContent['required'] === false || (isset($_REQUEST[$itemName]) && mb_strlen($_REQUEST[$itemName])) ) {
-        if ((isset($_REQUEST[$itemName]) && mb_strlen($_REQUEST[$itemName])) ) {
+        if ($itemContent['required'] === false || (isset($_REQUEST[$itemName]) && mb_strlen($_REQUEST[$itemName])) ) {
+            if ($itemContent['required'] === false && !mb_strlen($_REQUEST[$itemName])) {
+                continue;
+            }
+
             $itemContent['value'] = $_REQUEST[$itemName];
+
             switch ($itemName) {
                 case 'last-name':
                     if ( preg_match('/[^\w\-]/', $_REQUEST[$itemName]) === 0 )

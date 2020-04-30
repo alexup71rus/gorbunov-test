@@ -89,8 +89,12 @@
                 */
                 showError: function (elem, arValidFields = {}) {
                     var elItem = elem.closest(".js-form__item"),
-                        elError = elItem.querySelector(".js-field-error"),
+                        elError,
                         wrong = false;
+
+                    if (elItem) {
+                        elError = elItem.querySelector(".js-field-error")
+                    }
 
                     if (elItem && elError && arValidFields) {
                         for (var item in arValidFields) {
