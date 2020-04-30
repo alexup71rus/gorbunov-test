@@ -168,7 +168,7 @@
                             case 'first-name':
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (app.data.editedFirstName === false) {
-                                        app.datainputs['first-name_lat'].value = helper.translit(this.value);
+                                        app.data.inputs['first-name_lat'].value = helper.translit(this.value);
                                     }
                                     app.showError(this, [
                                         {
@@ -261,9 +261,9 @@
                             case 'birthdate-months':
                             case 'birthdate-years':
                                 this.data.inputs[key].addEventListener("change", function (e) {
-                                    var days = 32 - new Date(inputs['birthdate-years'].value, app.data.inputs['birthdate-months'].value, 32).getDate(),
+                                    var days = 32 - new Date(app.data.inputs['birthdate-years'].value, app.data.inputs['birthdate-months'].value, 32).getDate(),
                                         itemsHTML = '',
-                                        selectedId = inputs['birthdate-days'].value,
+                                        selectedId = app.data.inputs['birthdate-days'].value,
                                         selected = '';
 
                                     if (days < selectedId) {
@@ -405,8 +405,7 @@
                         }
                     }
 
-                    console.log(inputs);
-                    inputs['marital-status'].innerHTML = itemsHTML;
+                    app.data.inputs['marital-status'].innerHTML = itemsHTML;
                 },
             };
 

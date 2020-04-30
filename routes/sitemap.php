@@ -1,5 +1,5 @@
 <?php
-namespace Includes;
+namespace Routes;
 
 /**
  * Class Sitemap

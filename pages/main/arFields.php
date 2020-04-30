@@ -18,12 +18,6 @@ $arFields = [
         'text_error' => '',
         'value' => '',
     ],
-    'first-name' => [
-        'required' => true,
-        'error' => false,
-        'text_error' => '',
-        'value' => '',
-    ],
     'patronymic' => [
         'required' => true,
         'error' => false,

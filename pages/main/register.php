@@ -195,25 +195,33 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'marital-status':
-                    if (
-                        !isset($_REQUEST['gender'])
-                        || !isset( $maritalStatus[$_REQUEST['gender']] )
-                    )
-                    {
-                        $itemContent['error'] = true;
+                    if (!isset($_REQUEST[$itemName])) {
+                        $itemContent['error'] = false;
                         $itemContent['text_error'] = 'Невернвый формат';
-                    } else {
-                        if (isset($_REQUEST['gender']) && isset( $maritalStatus[$_REQUEST['gender']] ) ) {
-                            $itemContent['error'] = true;
-                            $itemContent['text_error'] = 'Невернвый формат';
-                            foreach ($maritalStatus[$_REQUEST['gender']] as $item) {
-                                if ($item === $_REQUEST[$itemName]) {
-                                    $itemContent['error'] = false;
-                                    $itemContent['text_error'] = '';
-                                }
-                            }
-                        }
                     }
+
+//                    if (
+//                        !isset($_REQUEST['gender'])
+//                        || !isset( $maritalStatus[$_REQUEST['gender']] )
+//                    )
+//                    {
+//                        $itemContent['error'] = true;
+//                        $itemContent['text_error'] = 'Невернвый формат';
+//                    } else {
+//                        if (isset($_REQUEST['gender']) && isset( $maritalStatus[$_REQUEST['gender']] ) ) {
+//                            $itemContent['error'] = true;
+//                            $itemContent['text_error'] = 'Невернвый формат';
+//                            print_r($maritalStatus[$_REQUEST['gender']]);
+//                            foreach ($maritalStatus[$_REQUEST['gender']] as $item) {
+////                                echo $_REQUEST[$itemName];
+//                                echo $_REQUEST['gender'];
+//                                if ($item === $_REQUEST[$itemName]) {
+//                                    $itemContent['error'] = false;
+//                                    $itemContent['text_error'] = '';
+//                                }
+//                            }
+//                        }
+//                    }
                     break;
 
                 case 'education':
@@ -254,7 +262,58 @@ if (count($_REQUEST)) {
 //    var_dump($arFields);
 }
 
+if($_SERVER['HTTP_HOST'] === 'localhost') {
+    $db = new \Includes\DB(
+        $GLOBALS['settings']['db']['local']['host'],
+        $GLOBALS['settings']['db']['local']['login'],
+        $GLOBALS['settings']['db']['local']['pass'],
+        $GLOBALS['settings']['db']['local']['db'],
+        $GLOBALS['settings']['db']['local']['port']
+    );
+} else {
+    $db = new \Includes\DB(
+        $GLOBALS['settings']['db']['production']['host'],
+        $GLOBALS['settings']['db']['production']['login'],
+        $GLOBALS['settings']['db']['production']['pass'],
+        $GLOBALS['settings']['db']['production']['db'],
+        $GLOBALS['settings']['db']['production']['port']
+    );
+}
+
+$res = $db->сreateTable('orders', [
+    'id' => 'INT AUTO_INCREMENT NOT NULL',
+    'first-name' => 'varchar(225) NOT NULL',
+    'last-name' => 'varchar(225) NOT NULL',
+    'old-last-name' => 'varchar(225) NOT NULL',
+    'patronymic' => 'varchar(225) NOT NULL',
+    'last-name_lat' => 'varchar(225) NOT NULL',
+    'first-name_lat' => 'varchar(225) NOT NULL',
+    'gender' => 'varchar(225) NOT NULL',
+    'birthdate-days' => 'varchar(225) NOT NULL',
+    'birthdate-months' => 'varchar(225) NOT NULL',
+    'birthdate-years' => 'varchar(225) NOT NULL',
+    'marital-status' => 'varchar(225) NOT NULL',
+    'education' => 'varchar(225) NOT NULL',
+    'phone' => 'varchar(225) NOT NULL',
+    'email' => 'varchar(225) NOT NULL',
+]);
+
+print_r($res);
+
+$writeOrder = true;
+
+foreach ($arFields as $field) {
+    if ($field['error'] || mb_strlen($field['value']) === 0) {
+        $writeOrder = false;
+    }
+}
+
+if ($writeOrder) {
+    $db->registerUser($arFields);
+}
+
+
 if ($isAjax) {
-    header('Content-Type: application/json');
+//    header('Content-Type: application/json');
     die(json_encode($arFields));
 }
