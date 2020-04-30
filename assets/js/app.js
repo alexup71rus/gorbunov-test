@@ -121,13 +121,13 @@
                 * привязка событий (и условия событий, не стал выносить)
                 */
                 bindForm: function (form) {
-                    var inputs = this.serializeForm(form, true);
-                    for (var key in inputs) {
+                    this.data.inputs = this.serializeForm(form, true);
+                    for (var key in this.data.inputs) {
                         switch (key) {
                             case 'phone':
                                 var matrix = "+7 ___ ___-__-__";
 
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     helper.mask(e, this, matrix);
 
                                     app.showError(this, [
@@ -138,12 +138,12 @@
                                     ]);
                                 });
 
-                                inputs[key].addEventListener("click", function () {
+                                this.data.inputs[key].addEventListener("click", function () {
                                     if (!this.value) {
                                         this.value = '+7 ';
                                     }
                                 });
-                                inputs[key].addEventListener("blur", function () {
+                                this.data.inputs[key].addEventListener("blur", function () {
                                     if (this.value === '+7 ' || this.value === '+7') {
                                         this.value = '';
                                     }
@@ -151,7 +151,7 @@
                                 break;
 
                             case 'email':
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     app.showError(this, [
                                         {
                                             result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value)),
@@ -162,9 +162,9 @@
                                 break;
 
                             case 'first-name':
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (app.data.editedFirstName === false) {
-                                        inputs['first-name_lat'].value = helper.translit(this.value);
+                                        app.datainputs['first-name_lat'].value = helper.translit(this.value);
                                     }
                                     app.showError(this, [
                                         {
@@ -180,9 +180,9 @@
                                 break;
 
                             case 'last-name':
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (app.data.editedLastName === false) {
-                                        inputs['last-name_lat'].value = helper.translit(this.value);
+                                        app.data.inputs['last-name_lat'].value = helper.translit(this.value);
                                     }
                                     app.showError(this, [
                                         {
@@ -198,7 +198,7 @@
                                 break;
 
                             case 'old-last-name':
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     app.showError(this, [
                                         {
                                             result: /[^А-Яа-я -]/.test(this.value),
@@ -214,7 +214,7 @@
 
 
                             case 'first-name_lat':
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (this.value) {
                                         app.data.editedFirstName = true;
                                     } else {
@@ -235,8 +235,7 @@
                                 break;
 
                             case 'last-name_lat':
-                                window.ln = inputs[key];
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (this.value) {
                                         app.data.editedLastName = true;
                                         app.showError(this, [
@@ -257,8 +256,8 @@
 
                             case 'birthdate-months':
                             case 'birthdate-years':
-                                inputs[key].addEventListener("change", function (e) {
-                                    var days = 32 - new Date(inputs['birthdate-years'].value, inputs['birthdate-months'].value, 32).getDate(),
+                                this.data.inputs[key].addEventListener("change", function (e) {
+                                    var days = 32 - new Date(inputs['birthdate-years'].value, app.data.inputs['birthdate-months'].value, 32).getDate(),
                                         itemsHTML = '',
                                         selectedId = inputs['birthdate-days'].value,
                                         selected = '';
@@ -276,14 +275,14 @@
                                         itemsHTML += '<option value="'+day+'" '+selected+'>'+day+'</option>';
                                     }
 
-                                    inputs['birthdate-days'].innerHTML = itemsHTML;
+                                    app.data.inputs['birthdate-days'].innerHTML = itemsHTML;
 
                                 });
                                 break;
 
                             case 'gender':
-                                if (inputs[key].closest('.js-gender.hiddenstart')) {
-                                    inputs[key].closest('.js-gender.hiddenstart').classList.add('hidden');
+                                if (this.data.inputs[key].closest('.js-gender.hiddenstart')) {
+                                    this.data.inputs[key].closest('.js-gender.hiddenstart').classList.add('hidden');
                                 }
                                 document.querySelectorAll('[name="gender"]').forEach(function (el) {
                                     el.addEventListener("click", function (e) {
@@ -294,14 +293,14 @@
                                 break;
 
                             case 'patronymic':
-                                inputs[key].addEventListener("blur", function (e) {
+                                this.data.inputs[key].addEventListener("blur", function (e) {
                                     if (app.data.gender) {
-                                        inputs['gender'].closest('.js-gender').classList.add('hidden');
+                                        app.data.inputs['gender'].closest('.js-gender').classList.add('hidden');
                                     } else {
-                                        inputs['gender'].closest('.js-gender').classList.remove('hidden');
+                                        app.data.inputs['gender'].closest('.js-gender').classList.remove('hidden');
                                     }
                                 });
-                                inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
                                     var value = this.value.trim(),
                                         genderTable = window.arGenderTable;
 
@@ -327,7 +326,7 @@
                                 break;
 
                             case 'submit':
-                                inputs[key].addEventListener("click", function (e) {
+                                this.data.inputs[key].addEventListener("click", function (e) {
                                     console.log(app.validateForm());
                                     return false;
                                 });
@@ -337,11 +336,12 @@
 
                     document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
                         e.preventDefault();
-                        app.validateForm(inputs);
+                        app.validateForm();
                     });
                 },
-                validateForm: function (inputs) {
-                    var XHR,
+                validateForm: function () {
+                    var inputs = app.data.inputs,
+                        XHR,
                         data = {},
                         dataStr = '';
 
@@ -350,7 +350,7 @@
 
                     for (var input in inputs) {
                         data[input] = inputs[input].value;
-                        dataStr += '&' + input + '=' + inputs[input].value
+                        dataStr += '&' + input + '=' + encodeURIComponent(inputs[input].value)
                     }
 
                     if ("onload" in new XMLHttpRequest()) {
@@ -364,9 +364,21 @@
                     connection.open('GET', '/?'+dataStr);
 
                     connection.onload = function() {
-                        // alert( this.responseText );
-                        document.querySelector('#error-exeption').innerText = 'ok';
-                        document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                        var resInputs = JSON.parse(this.responseText);
+                        document.querySelector('#error-exeption').value = '';
+                        document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+
+                        console.log(resInputs);
+                        for (input in resInputs) {
+                            var inputElem = document.querySelector('[name="'+input+'"]');
+
+                            app.showError(inputElem, [
+                                {
+                                    result: resInputs[input].error,
+                                    text: resInputs[input].text_error
+                                }
+                            ]);
+                        }
                     }
 
                     connection.onerror = function() {
@@ -376,7 +388,6 @@
                     }
 
                     connection.send();
-                    // будет проверка сервером
                 },
                 changeGender: function (genderVal) {
                     var sp = window.arSP,
@@ -390,6 +401,7 @@
                         }
                     }
 
+                    console.log(inputs);
                     inputs['marital-status'].innerHTML = itemsHTML;
                 },
             };

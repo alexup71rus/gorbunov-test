@@ -23,7 +23,7 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['last-name']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Фамилия</span>
                             <span class="js-form__item__content">
-                                <input type="text" name="last-name" value="<?= $arFields['last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="last-name" value="<?= $arFields['last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['last-name']['text_error'] ?></span>
                             </span>
                         </label>
@@ -38,7 +38,7 @@ include __DIR__ . '/register.php';
                             <label class="js-form__item js-slide-hide" <?= $arFields['old-last-name']['error'] ? 'js-error' : '' ?>>
                                 <span class="js-form__item__label">Старая фамилия</span>
                                 <span class="js-form__item__content">
-                                    <input type="text" name="old-last-name"  value="<?= $arFields['old-last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}">
+                                    <input class="<?= $arFields['old-last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="old-last-name"  value="<?= $arFields['old-last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}">
                                     <span class="js-field-error"><?= $arFields['old-last-name']['text_error'] ?></span>
                                 </span>
                             </label>
@@ -46,14 +46,14 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['first-name']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Имя</span>
                             <span class="js-form__item__content">
-                                <input type="text" name="first-name" value="<?= $arFields['first-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['first-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="first-name" value="<?= $arFields['first-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['first-name']['text_error'] ?></span>
                             </span>
                         </label>
                         <label class="js-form__item <?= $arFields['patronymic']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Отчество</span>
                             <span class="js-form__item__content">
-                                <input type="text" name="patronymic" value="<?= $arFields['patronymic']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['patronymic']['error'] ? 'js-wrong' : '' ?>" type="text" name="patronymic" value="<?= $arFields['patronymic']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['patronymic']['text_error'] ?></span>
                             </span>
                         </label>
@@ -62,14 +62,14 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['last-name_lat']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Фамилия латиницей</span>
                             <span class="js-form__item__content">
-                                <input type="text" name="last-name_lat" value="<?= $arFields['last-name_lat']['value'] ?>" pattern="[A-Za-z -]{0,25}" requiredfalse>
+                                <input class="<?= $arFields['last-name_lat']['error'] ? 'js-wrong' : '' ?>" type="text" name="last-name_lat" value="<?= $arFields['last-name_lat']['value'] ?>" pattern="[A-Za-z -]{0,25}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['last-name_lat']['text_error'] ?></span>
                             </span>
                         </label>
                         <label class="js-form__item <?= $arFields['first-name_lat']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Имя латиницей</span>
                             <span class="js-form__item__content">
-                                <input type="text" name="first-name_lat" value="<?= $arFields['first-name_lat']['value'] ?>" pattern="[A-Za-z -]{0,25}" requiredfalse>
+                                <input class="<?= $arFields['first-name_lat']['error'] ? 'js-wrong' : '' ?>" type="text" name="first-name_lat" value="<?= $arFields['first-name_lat']['value'] ?>" pattern="[A-Za-z -]{0,25}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['first-name_lat']['text_error'] ?></span>
                             </span>
                         </label>
@@ -86,15 +86,15 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item js-gender <?= $genderHidden ?> <?= $arFields['gender']['error'] ? 'js-error' : '' ?>" for="">
                             <span class="js-form__item__label">Пол</span>
                             <span class="js-form__item__content js-form__item__content_inline">
-                                        <label>
-                                            <input type="radio" name="gender" value="male" <?= $arFields['gender']['value'] !== 'female' ? 'checked' : '' ?>>
-                                            <span>Мужской</span>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="gender" value="female" <?= $arFields['gender']['value'] === 'female' ? 'checked' : '' ?>>
-                                            <span>Женский</span>
-                                        </label>
-                                    </span>
+                                <label>
+                                    <input type="radio" name="gender" value="male" <?= $arFields['gender']['value'] !== 'female' ? 'checked' : '' ?>>
+                                    <span>Мужской</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="gender" value="female" <?= $arFields['gender']['value'] === 'female' ? 'checked' : '' ?>>
+                                    <span>Женский</span>
+                                </label>
+                            </span>
                             <span class="js-field-error"><?= $arFields['gender']['text_error'] ?></span>
                         </label>
                     </div>
@@ -182,14 +182,14 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['phone']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Моб. телефон</span>
                             <span class="js-form__item__content">
-                                <input type="tel" name="phone" value="<?= $arFields['phone']['value'] ?>" placeholder="+7" pattern="[0-9 +-]{11,16}" requiredfalse>
+                                <input class="<?= $arFields['phone']['error'] ? 'js-wrong' : '' ?>" type="tel" name="phone" value="<?= $arFields['phone']['value'] ?>" placeholder="+7" pattern="[0-9 +-]{11,16}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['phone']['text_error'] ?></span>
                             </span>
                         </label>
                         <label class="js-form__item <?= $arFields['email']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Электронная почта</span>
                             <span class="js-form__item__content">
-                                <input type="email" name="email" value="<?= $arFields['email']['value'] ?>" requiredfalse>
+                                <input class="<?= $arFields['email']['error'] ? 'js-wrong' : '' ?>" type="email" name="email" value="<?= $arFields['email']['value'] ?>" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['email']['text_error'] ?></span>
                             </span>
                         </label>
