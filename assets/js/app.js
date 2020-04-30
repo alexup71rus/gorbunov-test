@@ -378,7 +378,7 @@
                             document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
                         }
 
-                        console.log(resInputs, resInputs.message);
+                        console.error('code ' + resInputs.code, resInputs.message);
 
                         for (input in resInputs.body) {
                             var inputElem = document.querySelector('[name="'+input+'"]');
