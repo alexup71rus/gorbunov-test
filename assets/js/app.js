@@ -282,7 +282,7 @@
                                 break;
 
                             case 'gender':
-                                inputs[key].closest('.js-gender').classList.add('hidden');
+                                inputs[key].closest('.js-gender.hiddenstart').classList.add('hidden');
                                 document.querySelectorAll('[name="gender"]').forEach(function (el) {
                                     el.addEventListener("click", function (e) {
                                         app.data.gender = this.value;
@@ -293,7 +293,6 @@
 
                             case 'patronymic':
                                 inputs[key].addEventListener("blur", function (e) {
-                                    console.log(app.data);
                                     if (app.data.gender) {
                                         inputs['gender'].closest('.js-gender').classList.add('hidden');
                                     } else {

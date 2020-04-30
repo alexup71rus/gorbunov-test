@@ -83,11 +83,20 @@ class Router
      * @param карта сайта
      * @return
      */
-    public function render($map)
+    public function render(bool $generate = true, $content)
     {
-        $pageFile = Router::route($map);
-
-        return $pageFile;
+        if ($generate === true && $content) {
+            $pageFile = Router::route($content);
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . '/pages/' . $pageFile .  '/index.php')) {
+                return $_SERVER['DOCUMENT_ROOT'] . '/pages/' . $pageFile .  '/index.php';
+            } else {
+                header('HTTP/1.1 502 Bad Gateway');
+                return $_SERVER['DOCUMENT_ROOT'] . '/pages/502/index.php';
+            }
+        } elseif ($generate === false && $content) {
+            return $_SERVER['DOCUMENT_ROOT'] . '/pages/' . $content .  '/index.php';
+        }
+        return false;
     }
 
     /*
@@ -97,7 +106,7 @@ class Router
      */
     public function requireHeader($template, $requires)
     {
-        require './templates/' . $template . '/header.php';
+        require $_SERVER['DOCUMENT_ROOT'] . '/templates/' . $template . '/header.php';
 
         return true;
     }

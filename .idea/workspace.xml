@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b63dac3e-234f-4d12-859c-06e5c936d807" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/includes/db.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/502/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/main/arFields.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/main/register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/404.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/404/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/admin/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/main/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,17 +46,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/main_theme" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/templates/main_theme" />
       <recent name="$PROJECT_DIR$/routes" />
       <recent name="$PROJECT_DIR$/includes" />
       <recent name="$PROJECT_DIR$/assets" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/main" />
+      <recent name="$PROJECT_DIR$/pages/admin" />
+      <recent name="$PROJECT_DIR$/pages/404" />
+      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -69,7 +83,9 @@
       <workItem from="1587989352977" duration="5156000" />
       <workItem from="1588067013043" duration="1656000" />
       <workItem from="1588077189214" duration="2311000" />
-      <workItem from="1588098636923" duration="57534000" />
+      <workItem from="1588098636923" duration="58076000" />
+      <workItem from="1588196190587" duration="171000" />
+      <workItem from="1588224832616" duration="16914000" />
     </task>
     <servers />
   </component>
@@ -87,18 +103,18 @@
     <state x="2668" y="298" key="FileChooserDialogImpl/0.0.1920.1038/1920.0.1920.1080@1920.0.1920.1080" timestamp="1580815691091" />
     <state x="2668" y="298" width="424" height="484" key="FileChooserDialogImpl/0.0.1920.1044/1920.0.1920.1080@1920.0.1920.1080" timestamp="1582819392422" />
     <state x="748" y="303" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.996@0.28.1920.996" timestamp="1588080518954" />
-    <state x="777" y="451" width="355" height="151" key="NewPhpFileDialog" timestamp="1588193575308">
+    <state x="777" y="451" width="355" height="151" key="NewPhpFileDialog" timestamp="1588229776206">
       <screen x="0" y="28" width="1920" height="996" />
     </state>
-    <state x="777" y="451" width="355" height="151" key="NewPhpFileDialog/0.28.1920.996@0.28.1920.996" timestamp="1588193575308" />
+    <state x="777" y="451" width="355" height="151" key="NewPhpFileDialog/0.28.1920.996@0.28.1920.996" timestamp="1588229776206" />
     <state x="0" y="257" width="487" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1588194323168">
       <screen x="0" y="28" width="1920" height="996" />
     </state>
     <state x="0" y="257" width="487" height="767" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.28.1920.996@0.28.1920.996" timestamp="1588194323168" />
-    <state x="663" y="241" width="594" height="570" key="find.popup" timestamp="1588188739039">
+    <state x="663" y="241" width="594" height="570" key="find.popup" timestamp="1588227238056">
       <screen x="0" y="28" width="1920" height="996" />
     </state>
-    <state x="663" y="241" width="594" height="570" key="find.popup/0.28.1920.996@0.28.1920.996" timestamp="1588188739039" />
+    <state x="663" y="241" width="594" height="570" key="find.popup/0.28.1920.996@0.28.1920.996" timestamp="1588227238056" />
     <state x="624" y="171" width="670" height="676" key="search.everywhere.popup" timestamp="1588172988956">
       <screen x="0" y="28" width="1920" height="996" />
     </state>
