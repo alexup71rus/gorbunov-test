@@ -1,5 +1,4 @@
 <?php
-
 namespace Includes;
 
 /**
@@ -7,87 +6,67 @@ namespace Includes;
  */
 class DB
 {
-    protected $settings = [
-
-    ];
-
-    function __construct($host, $user, $pass, $db = '', $port = 3306)
+    protected $pdo = null;
+    private static $instance;
+    private function __construct()
     {
-        $this->settings['host'] = $host;
-        $this->settings['user'] = $user;
-        $this->settings['pass'] = $pass;
-        $this->settings['port'] = $port;
-        $this->settings['connection'] = new \PDO('mysql:host='.$host.';dbname='.$db, $user, $pass);
-
-        return $this;
-    }
-
-    public function сreateTableConstruct($table, $fields)
-    {
-        global $fsdbh;
-
-        $sql = "CREATE TABLE IF NOT EXISTS `$table` (";
-        $pk  = '';
-
-        foreach($fields as $field => $type)
+        try
         {
-            $sql.= "`$field` $type,";
+            $settings = \Includes\Settings::getInstance();
+            $dataSettings = $settings->db();
 
-            if (preg_match('/AUTO_INCREMENT/i', $type))
-            {
-                $pk = $field;
+            if($_SERVER['HTTP_HOST'] === 'localhost') {
+                $dataSettings = $settings->db()['local'];
+            } else {
+                $dataSettings = $settings->db()['production'];
             }
+
+            $dsn = "mysql:dbname={$dataSettings['db']};host={$dataSettings['host']};charset=UTF8";
+            $this->pdo = new \PDO($dsn, $dataSettings['login'], $dataSettings['pass']);
         }
-
-        $sql = rtrim($sql,',') . ' PRIMARY KEY (`'.$pk.'`)';
-
-        $sql .= ") CHARACTER SET utf8 COLLATE utf8_general_ci"; return $sql;
-        if($fsdbh->exec($sql) !== false) { return 1; }
+        catch (PDOException $e)
+        {
+            echo 'Подключение не удалось: ' . $e->getMessage();
+        }
     }
-
-    public function сreateTable($table, $fields)
+    static function getInstance()
     {
-        return $this->settings['connection']->exec($this->сreateTableConstruct($table, $fields));
+        if (is_null(self::$instance))
+        {
+            self::$instance = new self();
+        }
+        return self::$instance;
     }
-
+    public function connect()
+    {
+        return $this->pdo;
+    }
     public function registerUser(array $fields)
     {
         $data = [];
         $query = '';
+        $arQueryKeys = [];
+        $arQueryValues = [];
+        $arCountValues = [];
 
         foreach ($fields as $k => $field) {
             $data[$k] = $field['value'];
-            $query .= '`'.$k.'` = :'.$k.', ';
+            $arQueryKeys[] = "`".str_replace('-', '_', $k)."`";
+            $arQueryValues[] = $field['value'];
+            $arCountValues[] = '?';
         }
 
-        $query = substr($query, 0, -2);
+        $queryKeys = implode($arQueryKeys, ',');
+        $countValues = implode($arCountValues, ',');
 
         if ($data) {
-            $sth = $this->settings['connection']->prepare("INSERT INTO `orders` SET " . $query);
-            $sth->execute($data);
-            $insert_id = $this->settings['connection']->lastInsertId();
-            print_r($insert_id);
+            $sth = $this->pdo->prepare('INSERT INTO orders (' . $queryKeys . ') VALUES (' . $countValues . ');');
+            $sth->execute($arQueryValues);
+            $insertId = $this->pdo->lastInsertId();
+            return $insertId;
         }
     }
+    protected function __clone()
+    {
+    }
 }
-
-/*
-
-CREATE TABLE `bureau`.`orders` (
-`id` INT NOT NULL,
-`first-name` VARCHAR(255) NULL,
-`last-name` VARCHAR(255) NULL,
-`old-last-name` VARCHAR(255) NULL,
-`patronymic` VARCHAR(255) NULL,
-`last-name_lat` VARCHAR(255) NULL,
-`first-name_lat` VARCHAR(255) NULL,
-`gender` VARCHAR(255) NULL,
-`birthdate` VARCHAR(255) NULL,
-`marital-status` VARCHAR(255) NULL,
-`education` VARCHAR(255) NULL,
-`phone` VARCHAR(255) NULL,
-`email` VARCHAR(255) NULL,
-PRIMARY KEY (`id`));
-
- */
-

@@ -1,12 +1,14 @@
 <?php
-$GLOBALS['settings'] = [
+// массив с настройками.
+// ВНИМАНИЕ! Ключи (название настройки) можно изменять только в рамках всего проекта.
+return [
     'db' => [
         'local' => [
             'host' => 'localhost',
             'port' => 3306,
             'login' => 'user',
             'pass' => '123',
-            'db' => '',
+            'db' => 'bureau',
         ],
         'production' => [
             'host' => 'bureau.intensa-dev.ru',

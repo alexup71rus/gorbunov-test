@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__ . '/arFields.php';
 
+$response = [
+    'code' => 0,
+    'message' => '',
+    'body' => [],
+];
+
 $translitTable = [
     'а' => 'a', 'б' => 'b', 'в' => 'v', 'г' => 'g', 'д' => 'd',
     'е' => 'e', 'ё' => 'e', 'ж' => 'zh', 'з' => 'z', 'и' => 'i',
@@ -262,58 +268,42 @@ if (count($_REQUEST)) {
 //    var_dump($arFields);
 }
 
-if($_SERVER['HTTP_HOST'] === 'localhost') {
-    $db = new \Includes\DB(
-        $GLOBALS['settings']['db']['local']['host'],
-        $GLOBALS['settings']['db']['local']['login'],
-        $GLOBALS['settings']['db']['local']['pass'],
-        $GLOBALS['settings']['db']['local']['db'],
-        $GLOBALS['settings']['db']['local']['port']
-    );
-} else {
-    $db = new \Includes\DB(
-        $GLOBALS['settings']['db']['production']['host'],
-        $GLOBALS['settings']['db']['production']['login'],
-        $GLOBALS['settings']['db']['production']['pass'],
-        $GLOBALS['settings']['db']['production']['db'],
-        $GLOBALS['settings']['db']['production']['port']
-    );
-}
-
-$res = $db->сreateTable('orders', [
-    'id' => 'INT AUTO_INCREMENT NOT NULL',
-    'first-name' => 'varchar(225) NOT NULL',
-    'last-name' => 'varchar(225) NOT NULL',
-    'old-last-name' => 'varchar(225) NOT NULL',
-    'patronymic' => 'varchar(225) NOT NULL',
-    'last-name_lat' => 'varchar(225) NOT NULL',
-    'first-name_lat' => 'varchar(225) NOT NULL',
-    'gender' => 'varchar(225) NOT NULL',
-    'birthdate-days' => 'varchar(225) NOT NULL',
-    'birthdate-months' => 'varchar(225) NOT NULL',
-    'birthdate-years' => 'varchar(225) NOT NULL',
-    'marital-status' => 'varchar(225) NOT NULL',
-    'education' => 'varchar(225) NOT NULL',
-    'phone' => 'varchar(225) NOT NULL',
-    'email' => 'varchar(225) NOT NULL',
-]);
-
-print_r($res);
-
 $writeOrder = true;
 
 foreach ($arFields as $field) {
-    if ($field['error'] || mb_strlen($field['value']) === 0) {
+    if ($field['error']) {
         $writeOrder = false;
     }
 }
 
 if ($writeOrder) {
-    $db->registerUser($arFields);
+    $db = \Includes\DB::getInstance();
+    $dbConnection = $db->connect();
+
+    unset($arFields['agree']);
+    $arFields['birthdate-months']['value'] = $date['months'][ (int) $arFields['birthdate-months']['value'] ];
+    $arFields['education']['value'] = $education[ (int) $arFields['education']['value'] ];
+
+    if (!$db->registerUser($arFields)) {
+        $response = [
+            'code' => 3,
+            'message' => 'Человек с таким телефоном уже зарегистрирован',
+            'body' => [],
+        ];
+    }
 }
 
 
 if ($isAjax) {
-//    header('Content-Type: application/json');
-    die(json_encode($arFields));
+    @header('Content-Type: application/json');
+
+    if ($response['code'] === 0) {
+        die(json_encode($response = [
+            'code' => 0,
+            'message' => '',
+            'body' => $arFields,
+        ]));
+    } else {
+        die(json_encode($response));
+    }
 }

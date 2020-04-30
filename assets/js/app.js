@@ -369,11 +369,18 @@
 
                     connection.onload = function() {
                         var resInputs = JSON.parse(this.responseText);
-                        document.querySelector('#error-exeption').value = '';
-                        document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
 
-                        console.log(resInputs);
-                        for (input in resInputs) {
+                        if (resInputs.code) {
+                            document.querySelector('#error-exeption').innerText = resInputs.message;
+                            document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                        } else {
+                            document.querySelector('#error-exeption').innerText = '';
+                            document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+                        }
+
+                        console.log(resInputs, resInputs.message);
+
+                        for (input in resInputs.body) {
                             var inputElem = document.querySelector('[name="'+input+'"]');
 
                             app.showError(inputElem, [
@@ -387,7 +394,7 @@
 
                     connection.onerror = function() {
                         console.error(this.status);
-                        document.querySelector('#error-exeption').value = this.status;
+                        document.querySelector('#error-exeption').innerText = this.status;
                         document.querySelector('.js-form__item__content-footer').classList.add('js-error');
                     }
 
