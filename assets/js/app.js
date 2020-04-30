@@ -1,4 +1,5 @@
 (function() {
+    'use strict';
     try {
         var helper = {
                 /*
@@ -67,8 +68,7 @@
                 serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
                     var queryInputs = form.querySelectorAll('input'),
                         querySelects = form.querySelectorAll('select'),
-                        eachAll = [queryInputs, querySelects];
-
+                        eachAll = [queryInputs, querySelects],
                         inputs = {};
                     if (objects === true) {
                         eachAll.forEach(function (e, i) {
@@ -93,7 +93,7 @@
                         wrong = false;
 
                     if (elItem && elError && arValidFields) {
-                        for (item in arValidFields) {
+                        for (var item in arValidFields) {
                             if (arValidFields[item].result === true) {
                                 wrong = arValidFields[item].text;
                             }
@@ -121,8 +121,8 @@
                 * привязка событий (и условия событий, не стал выносить)
                 */
                 bindForm: function (form) {
-                    inputs = this.serializeForm(form, true);
-                    for (key in inputs) {
+                    var inputs = this.serializeForm(form, true);
+                    for (var key in inputs) {
                         switch (key) {
                             case 'phone':
                                 var matrix = "+7 ___ ___-__-__";
@@ -260,7 +260,7 @@
                                 inputs[key].addEventListener("change", function (e) {
                                     var days = 32 - new Date(inputs['birthdate-years'].value, inputs['birthdate-months'].value, 32).getDate(),
                                         itemsHTML = '',
-                                        selectedId = inputs['birthdate-days'].value;
+                                        selectedId = inputs['birthdate-days'].value,
                                         selected = '';
 
                                     if (days < selectedId) {
@@ -282,7 +282,9 @@
                                 break;
 
                             case 'gender':
-                                inputs[key].closest('.js-gender.hiddenstart').classList.add('hidden');
+                                if (inputs[key].closest('.js-gender.hiddenstart')) {
+                                    inputs[key].closest('.js-gender.hiddenstart').classList.add('hidden');
+                                }
                                 document.querySelectorAll('[name="gender"]').forEach(function (el) {
                                     el.addEventListener("click", function (e) {
                                         app.data.gender = this.value;
@@ -334,19 +336,55 @@
                     }
 
                     document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
-                        app.validateForm();
+                        e.preventDefault();
+                        app.validateForm(inputs);
                     });
                 },
                 validateForm: function (inputs) {
+                    var XHR,
+                        data = {},
+                        dataStr = '';
+
+                    data['ajax'] = 'Y';
+                    dataStr = 'ajax=Y';
+
+                    for (var input in inputs) {
+                        data[input] = inputs[input].value;
+                        dataStr += '&' + input + '=' + inputs[input].value
+                    }
+
+                    if ("onload" in new XMLHttpRequest()) {
+                        XHR = XMLHttpRequest;
+                    } else {
+                        XHR = XDomainRequest;
+                    }
+
+                    var connection = new XHR();
+
+                    connection.open('GET', '/?'+dataStr);
+
+                    connection.onload = function() {
+                        // alert( this.responseText );
+                        document.querySelector('#error-exeption').innerText = 'ok';
+                        document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                    }
+
+                    connection.onerror = function() {
+                        console.error(this.status);
+                        document.querySelector('#error-exeption').value = this.status;
+                        document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                    }
+
+                    connection.send();
                     // будет проверка сервером
                 },
                 changeGender: function (genderVal) {
-                    var value = sp = window.arSP,
+                    var sp = window.arSP,
                         itemsHTML = '';
 
-                    for (gender in sp) {
+                    for (var gender in sp) {
                         if (gender === genderVal || gender === 'for_all') {
-                            for (item in sp[gender]) {
+                            for (var item in sp[gender]) {
                                 itemsHTML += '<option value="'+sp[gender][item]+'">'+sp[gender][item]+'</option>';
                             }
                         }

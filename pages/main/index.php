@@ -182,7 +182,7 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['phone']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Моб. телефон</span>
                             <span class="js-form__item__content">
-                                <input type="tel" name="phone" value="<?= $arFields['phone']['value'] ?>" placeholder="+7" pattern="\[0-9 +-]{11,16}" requiredfalse>
+                                <input type="tel" name="phone" value="<?= $arFields['phone']['value'] ?>" placeholder="+7" pattern="[0-9 +-]{11,16}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['phone']['text_error'] ?></span>
                             </span>
                         </label>

@@ -244,6 +244,10 @@ h1 {
   display: inline-block;
 }
 
+#error-exeption {
+  margin-left: calc(50% + 50px);
+}
+
 
   /* animation */
 
