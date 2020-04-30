@@ -370,12 +370,17 @@
                     connection.onload = function() {
                         var resInputs = JSON.parse(this.responseText);
 
-                        if (resInputs.code) {
+                        if (resInputs.code === 23000) {
                             document.querySelector('#error-exeption').innerText = resInputs.message;
                             document.querySelector('.js-form__item__content-footer').classList.add('js-error');
                         } else {
                             document.querySelector('#error-exeption').innerText = '';
                             document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+                        }
+
+                        if (resInputs.code === 2) {
+                            document.querySelector('.js-form__item__content-footer').classList.add('hidden');
+                            document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
                         }
 
                         console.error('code ' + resInputs.code, resInputs.message);

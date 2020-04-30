@@ -23,6 +23,7 @@ class DB
 
             $dsn = "mysql:dbname={$dataSettings['db']};host={$dataSettings['host']};charset=UTF8";
             $this->pdo = new \PDO($dsn, $dataSettings['login'], $dataSettings['pass']);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e)
         {
@@ -60,10 +61,14 @@ class DB
         $countValues = implode($arCountValues, ',');
 
         if ($data) {
-            $sth = $this->pdo->prepare('INSERT INTO orders (' . $queryKeys . ') VALUES (' . $countValues . ');');
-            $sth->execute($arQueryValues);
-            $insertId = $this->pdo->lastInsertId();
-            return $insertId;
+            try {
+                $sth = $this->pdo->prepare('INSERT INTO orders (' . $queryKeys . ') VALUES (' . $countValues . ');');
+                $result = $sth->execute($arQueryValues);
+                $insertId = $this->pdo->lastInsertId();
+                return true;
+            } catch (\Exception $exception) {
+                return $exception;
+            }
         }
     }
     protected function __clone()

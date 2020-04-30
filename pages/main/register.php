@@ -277,17 +277,33 @@ foreach ($arFields as $field) {
 }
 
 if ($writeOrder) {
+    $_arFields = $arFields;
+
     $db = \Includes\DB::getInstance();
     $dbConnection = $db->connect();
 
-    unset($arFields['agree']);
+    unset($_arFields['agree']);
     $arFields['birthdate-months']['value'] = $date['months'][ (int) $arFields['birthdate-months']['value'] ];
     $arFields['education']['value'] = $education[ (int) $arFields['education']['value'] ];
 
-    if (!$db->registerUser($arFields)) {
+    $res = $db->registerUser($_arFields);
+
+    if ($res === true) {
         $response = [
-            'code' => 3,
+            'code' => 2,
+            'message' => 'Регистрация прошла успешно',
+            'body' => [],
+        ];
+    } elseif ($res->getCode() === '23000') {
+        $response = [
+            'code' => 23000,
             'message' => 'Человек с таким телефоном уже зарегистрирован',
+            'body' => [],
+        ];
+    } else {
+        $response = [
+            'code' => $res->getCode(),
+            'message' => $res->getMessage(),
             'body' => [],
         ];
     }

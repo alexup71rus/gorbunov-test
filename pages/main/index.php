@@ -185,7 +185,8 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['phone']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Моб. телефон</span>
                             <span class="js-form__item__content">
-                                <input class="<?= $arFields['phone']['error'] ? 'js-wrong' : '' ?>" type="tel" name="phone" value="<?= $arFields['phone']['value'] ?>" placeholder="+7" pattern="[0-9 +-]{11,16}" requiredfalse>
+                                <input class="<?= $arFields['phone']['error'] ? 'js-wrong' : '' ?>" type="tel" name="phone" value="<?=
+                                    $arFields['phone']['value'] ?>" placeholder="+7" pattern="[0-9 +-]{11,16}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['phone']['text_error'] ?></span>
                             </span>
                         </label>
@@ -199,12 +200,21 @@ include __DIR__ . '/register.php';
                     </div>
                 </div>
 
+                <?php
+                $success = ($response['code'] === 2);
+                $error = (!$success && $response['code']);
+                ?>
                 <div class="form__container_footer">
-                    <div class="js-form__item__content-footer <?= $arFields['agree']['error'] ? 'js-error' : '' ?>">
+                    <div class="js-form__item__content-footer <?= $arFields['agree']['error'] || $error ? 'js-error' : '' ?> <?= $success ? 'hidden' : '' ?>">
                         <input id="form-item-final-chk" type="checkbox" name="agree" value="Y">
                         <label class="js-form__item-label-agree" for="form-item-final-chk">Ставя эту галочку, я подтверждаю, что поставил её в трезвом уме и твёрдой памяти.</label>
-                        <span class="js-field-error" id="error-exeption"></span>
+                        <span class="js-field-error" id="error-exeption"><?= $error ? $response['message'] : '' ?></span>
                         <button class="js-form__item__submit" id="js-form-item-final-btn">Полететь на Марс</button>
+                    </div>
+                    <div class="js-form__item__content-footer_success <?= $success ? '' : 'hidden' ?>">
+                        <div class="form__footer-content">
+                            Спасибо! Ваша заявка принята. Мы ответим в течение суток
+                        </div>
                     </div>
                 </div>
             </form>

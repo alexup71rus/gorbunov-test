@@ -45,6 +45,16 @@ h1 {
   background-image: linear-gradient(#d7cad8 0%, #a5b0ce 60%);
 }
 
+.form__footer-content {
+  margin-bottom: 79px;
+  max-width: 55%;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+  color: #000000;
+}
+
 /* sidebar */
 
 .sidebar {
