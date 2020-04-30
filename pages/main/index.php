@@ -117,7 +117,8 @@ include __DIR__ . '/register.php';
                                     <option value=""></option>
 
                                     <?php foreach ($date['months'] as $k => $month): ?>
-                                        <option value="<?= $k ?>" <?= (int) $arFields['birthdate-months']['value'] === $k ? 'selected' : '' ?>><?= $month ?></option>
+                                        <option value="<?= $k ?>" <?= strlen($arFields['birthdate-months']['value']) && (int) $arFields['birthdate-months']['value'] === $k
+                                            ? 'selected' : '' ?>><?= $month ?></option>
 
                                     <?php endforeach; ?>
 
@@ -169,7 +170,8 @@ include __DIR__ . '/register.php';
 
                                         <?php foreach ($education as $k => $text): ?>
 
-                                            <option value="<?= $k ?>" <?= (int) $arFields['education']['value'] === $k ? 'selected' : '' ?>><?= $text ?></option>
+                                            <option value="<?= $k ?>" <?= strlen($arFields['education']['value']) && (int) $arFields['education']['value'] === $k
+                                                ? 'selected' : '' ?>><?= $text ?></option>
 
                                         <?php endforeach; ?>
 
