@@ -78,7 +78,8 @@ include __DIR__ . '/register.php';
                         <?php
                         $genderHidden = 'hiddenstart';
                         if (
-                            !isset($genderTable[ strtolower(substr($arFields['patronymic']['value'], -2)) ])
+                            $arFields['patronymic']['value']
+                            && !isset($genderTable[ strtolower(substr($arFields['patronymic']['value'], -2)) ])
                         ) {
                             $genderHidden = '';
                         }
