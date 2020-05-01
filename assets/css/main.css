@@ -15,7 +15,7 @@
   width: 100%;
 }
 h1 {
-  letter-spacing: -1.1px;
+  letter-spacing: -1.05px;
 }
 
 /* page */
@@ -81,29 +81,30 @@ h1 {
 
 }
 .js-form__item-container > .js-form__item {
-  padding: 0 0 15px 0;
+  padding: 0 0 14.9px 0;
 }
 .js-form__item {
 
   display: block;
   font-size: 13px;
-  line-height: 20px;
+  line-height: 18px;
 }
 .js-form__item-container {
   position: relative;
-  margin-bottom: 20px;
-  max-width: 475px;
+  margin-bottom: 21px;
+  max-width: 479px;
 }
 .js-form__item-container h3 {
-  margin: 10px 0 10px 160px;
-  letter-spacing: 0.5px;
+  margin: 10px 0 10px 163px;
+  letter-spacing: 0.55px;
 }
 .js-form__item select {
   padding: 4px 5px;
+  min-height: 27px;
 }
 .js-form__item input {
-  max-width: 300px;
-  padding: 1px 8px;
+  max-width: 305px;
+  padding: 1px 4px;
   width: 100%;
   height: 25px;
   border: 0;
@@ -124,7 +125,7 @@ h1 {
   max-width: 316px;
 }
 .form-item__label-check {
-  margin-left: 20px;
+  margin-left: 18px;
   max-width: 316px;
 }
 .js-form__item input[type="radio"] {
@@ -140,29 +141,30 @@ h1 {
   max-width: 316px;
 }
 .js-form__item__content {
-  max-width: 315px;
+  max-width: 320px;
 }
 .js-form__item__content .js-wrong, .js-form__item__content .js-wrong {
   box-shadow: inset 0px 1px 1px rgba(39, 39, 39, 0.25), 0 0 0 1px red;
 }
 .js-form__item__content:not(.js-form__item__content_inline) select {
-  max-width: 165px;
+  max-width: 160px;
   width: 100%;
 }
 
 .js-form__item__label {
   display: inline-block;
-  min-width: 154px;
-  max-width: 155px;
+  min-width: 158px;
+  max-width: 158px;
+  line-height: 17px;
 }
 
 .js-form__item_chk {
-  margin-top: -9px;
+  margin-top: -13px;
 }
 
 .js-form__item__content-footer {
   margin: 10px 0 10px 160px;
-  max-width: 316px;
+  max-width: 335px;
 }
 
 #form-registration .js-form__item__submit {
