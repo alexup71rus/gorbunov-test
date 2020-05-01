@@ -390,12 +390,12 @@
                         }
                     }
 
-                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
-
                     form.addEventListener("submit", function (e) {
                         e.preventDefault();
                         app.validateForm();
                     });
+
+                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
 
                     this.restoreForm();
                 },
