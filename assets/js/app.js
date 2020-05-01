@@ -433,6 +433,7 @@
                             if (resInputs.code === 23000) {
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                            } else if (resInputs.code === 0) {
                             } else if (resInputs.code === 0 || resInputs.code === 2) {
                                 document.querySelector('.js-form__item__content-footer').classList.add('hidden');
                                 document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
