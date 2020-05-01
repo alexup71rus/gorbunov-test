@@ -303,8 +303,8 @@ if ($writeOrder) {
         mail(
             'alexup71rus@gmail.com, kirill@intensa.ru',
             'Заявка на полёт на Марс',
-            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend.
-'Дата отправки формы: ' . date("d.m.Y H:i") . "\r\n" .
+            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\n".
+'Дата заявки: ' . date("d.m.Y H:i") . "\r\n" .
 'Фамилия: ' . $arFields['last-name']['value'] . "\r\n" .
 'Старая фамилия: ' . $arFields['last-name']['value'] . "\r\n" .
 'Имя: ' . $arFields['first-name']['value'] . "\r\n" .
