@@ -281,7 +281,7 @@ foreach ($arFields as $field) {
 
 if ($writeOrder) {
     $_arFields = $arFields;
-    $dateSend = date("d.m.Y H:i");
+    $dateSend = strtotime("now");
 
     $db = \Includes\DB::getInstance();
     $dbConnection = $db->connect();
@@ -303,8 +303,20 @@ if ($writeOrder) {
         mail(
             'alexup71rus@gmail.com, kirill@intensa.ru',
             'Заявка на полёт на Марс',
-            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend."
-Фамилия: " . $arFields['last-name']['value'],
+            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend.
+'Дата отправки формы: ' . date("d.m.Y H:i") .
+'Фамилия: ' . $arFields['last-name']['value'] .
+'Старая фамилия: ' . $arFields['last-name']['value'] .
+'Имя: ' . $arFields['first-name']['value'] .
+'Отчество: ' . $arFields['patronymic']['value'] .
+'Фамилия латиницей: ' . $arFields['last-name_lat']['value'] .
+'Имя латиницей: ' . $arFields['first-name_lat']['value'] .
+'Пол: ' . $arFields['gender']['value'] .
+'Дата рождения: ' . $arFields['birthdate-days']['value'] . ' ' . $arFields['birthdate-months']['value'] . ' ' . $arFields['birthdate-years']['value'] .
+'Семейное положение: ' . $arFields['marital-status']['value'] .
+'Образование: ' . $arFields['education']['value'] .
+'Моб. телефон: ' . $arFields['phone']['value'] .
+'Электронная почта: ' . $arFields['email']['value'],
             "Reply-To: {$arFields['email']['value']}\r\n"
             ."From: admin@intensa.ru\r\n"
             ."Content-type: text/plain; charset=utf-8\r\n"
