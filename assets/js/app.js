@@ -152,15 +152,22 @@
                                 this.data.inputs[key].addEventListener("blur", function () {
                                     if (this.value === '+7 ' || this.value === '+7') {
                                         this.value = '';
+                                    } else if (this.value.length < 16) {
+                                        app.showError(this, [
+                                            {
+                                                result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value.normalize('NFC'))),
+                                                text: 'Только цифры, до 16 символов'
+                                            },
+                                        ]);
                                     }
                                 });
                                 break;
 
                             case 'email':
-                                this.data.inputs[key].addEventListener("keyup", function (e) {
+                                this.data.inputs[key].addEventListener("blur", function (e) {
                                     app.showError(this, [
                                         {
-                                            result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value.normalize('NFC'))),
+                                            result: ( (this.value.length > 0) && !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g.test(this.value.toLowerCase().normalize('NFC'))),
                                             text: 'Не сможем связаться по этому адресу'
                                         },
                                     ]);
