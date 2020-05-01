@@ -286,8 +286,8 @@ if ($writeOrder) {
     $dbConnection = $db->connect();
 
     unset($_arFields['agree']);
-    $arFields['birthdate-months']['value'] = $date['months'][ (int) $arFields['birthdate-months']['value'] ];
-    $arFields['education']['value'] = $education[ (int) $arFields['education']['value'] ];
+    $_arFields['birthdate-months']['value'] = $date['months'][ (int) $arFields['birthdate-months']['value'] ];
+    $_arFields['education']['value'] = $education[ (int) $arFields['education']['value'] ];
 
     $res = $db->registerUser($_arFields);
 
