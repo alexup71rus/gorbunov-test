@@ -387,15 +387,13 @@
                                     }
                                 });
                                 break;
-
-                            case 'submit':
-                                form.addEventListener("submit", function (e) {
-                                    e.preventDefault();
-                                    console.log(app.validateForm());
-                                });
-                                break;
                         }
                     }
+
+                    form.addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        app.validateForm();
+                    });
                 },
                 validateForm: function () {
                     var inputs = app.data.inputs,
