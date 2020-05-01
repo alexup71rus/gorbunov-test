@@ -390,17 +390,12 @@
 
                             case 'submit':
                                 form.addEventListener("submit", function (e) {
+                                    e.preventDefault();
                                     console.log(app.validateForm());
-                                    return false;
                                 });
                                 break;
                         }
                     }
-
-                    document.querySelector('#js-form-item-final-btn').addEventListener("click", function (e) {
-                        e.preventDefault();
-                        app.validateForm();
-                    });
                 },
                 validateForm: function () {
                     var inputs = app.data.inputs,
