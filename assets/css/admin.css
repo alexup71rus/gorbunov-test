@@ -1,9 +1,7 @@
+table {
+  width: 100%;
+}
+
 .t-header {
   background-color: #ddd;
-}
-.t-col {
-  display: inline-block;
-  padding: 5px;
-  width: 8%;
-  text-align: center;
 }
