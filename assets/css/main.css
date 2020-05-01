@@ -39,7 +39,7 @@ h1 {
 
 .form__container_footer {
   display: inline-block;
-  padding: 20px 20px 30px 20px;
+  padding: 20px 20px 33px 20px;
   max-width: 600px;
   width: 100%;
   background-color: #a5b0ce;
@@ -65,13 +65,13 @@ h1 {
   float: right;
 }
 .sidebar .sidebar__title {
-  margin: 0;
+  margin: 1px 0 0;
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
 }
 .sidebar p {
-  margin: 5px 0;
+  margin: 3px 0;
   font-size: 13px;
   line-height: 18px;
 }
@@ -92,7 +92,7 @@ h1 {
 }
 .js-form__item-container {
   position: relative;
-  margin-bottom: 21px;
+  margin-bottom: 20.8px;
   max-width: 479px;
 }
 .js-form__item-container h3 {
@@ -112,6 +112,9 @@ h1 {
   box-shadow: inset 0px 1px 1px rgba(39, 39, 39, 0.25);
   font-size: 18px;
   line-height: 20px;
+}
+.js-form__item input::placeholder {
+  color: #A9A9A9;
 }
 .js-form__item input[type="checkbox"] {
   position: absolute;
@@ -158,6 +161,7 @@ h1 {
   min-width: 158px;
   max-width: 158px;
   line-height: 17px;
+  vertical-align: text-bottom;
 }
 
 .js-form__item_chk {
@@ -172,7 +176,7 @@ h1 {
 #form-registration .js-form__item__submit {
   position: relative;
   display: inline-block;
-  padding: 15px 20px;
+  padding: 13.8px 20px;
   margin-top: 20px;
   max-width: 280px;
   width: 100%;
@@ -191,18 +195,17 @@ h1 {
 }
 #form-registration .js-form__item__submit::before {
   content: '';
-  position: absolute;
   display: block;
-  width: calc(100% - 10px);
-  height: 45%;
-  top: 5px;
-  left: 5px;
+  margin-top: -8px;
+  margin-bottom: -16.1px;
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 24.3px;
   border-radius: 100px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.22));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.22));
-  background-image:-moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.22));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.22));
-  z-index: 1;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
+  background-image:-moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
 }
 
 .js-form__item-label-agree {
@@ -215,7 +218,7 @@ h1 {
 }
 #form-item-final-chk {
   position: absolute;
-  margin: 2px 3px 5px 0;
+  margin: 0px 0px 0px 1px;
   width: 15px;
   height: 15px;
   box-shadow: none;
