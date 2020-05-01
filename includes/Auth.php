@@ -20,10 +20,6 @@ class Auth
                 }
             }
         } else {
-            $needAuth = false;
-        }
-
-        if ($needAuth) {
             header('HTTP/1.1 401 Authorization Required');
             header('WWW-Authenticate: Basic realm="Access denied"');
             exit;
