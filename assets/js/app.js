@@ -313,7 +313,7 @@
 
                                     app.showError(app.data.inputs['birthdate-years'], [
                                         {
-                                            result: (!app.data.inputs['birthdate-years'].value),
+                                            result: false, //  (!app.data.inputs['birthdate-years'].value)
                                             text: 'Поле не заполнено'
                                         },
                                     ]);
@@ -325,7 +325,7 @@
                                 this.data.inputs[key].addEventListener("change", function (e) {
                                     app.showError(this, [
                                         {
-                                            result: (!app.data.inputs['marital-status'].value),
+                                            result: false, //  (!app.data.inputs['marital-status'].value),
                                             text: 'Поле не заполнено'
                                         },
                                     ]);
