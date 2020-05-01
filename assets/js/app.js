@@ -66,9 +66,11 @@
                     this.bindForm(document.querySelector('#form'));
                 },
                 serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
-                    var queryInputs = form.querySelectorAll('input'),
+                    var queryText = form.querySelectorAll('input'),
+                        queryCheckbox = form.querySelectorAll('input[type="checkbox"]'),
+                        queryRadio = form.querySelectorAll('input[type="radio"]:checked'),
                         querySelects = form.querySelectorAll('select'),
-                        eachAll = [queryInputs, querySelects],
+                        eachAll = [queryText, queryCheckbox, queryRadio, querySelects],
                         inputs = {};
                     if (objects === true) {
                         eachAll.forEach(function (e, i) {
