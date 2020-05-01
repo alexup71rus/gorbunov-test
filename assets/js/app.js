@@ -390,16 +390,54 @@
                         }
                     }
 
+                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
+
                     form.addEventListener("submit", function (e) {
                         e.preventDefault();
                         app.validateForm();
                     });
+
+                    this.restoreForm();
+                },
+                saveForm: function () {
+                    var inputs = app.data.inputs,
+                        data = {};
+
+                    for (var input in inputs) {
+                        data[input] = inputs[input].value;
+                    }
+
+                    localStorage.setItem('fields', JSON.stringify(data));
+                },
+                restoreForm: function () {
+                    var fieldsJson = localStorage.getItem('fields') || '',
+                        fields = JSON.parse(fieldsJson);
+                    for (var input in app.data.inputs) {
+                        if (typeof fields[input] !== "undefined") {
+                            switch (input) {
+                                case 'last-name':
+                                case 'first-name':
+                                case 'patronymic':
+                                case 'last-name_lat':
+                                case 'first-name_lat':
+                                case 'phone':
+                                case 'email':
+                                    if (fields[input].length) {
+                                        app.data.inputs[input].value = fields[input];
+                                    }
+                                    break;
+                            }
+                            console.log(input);
+                            // input[input].value = fields[input];
+                        }
+                    }
                 },
                 validateForm: function () {
                     var inputs = app.data.inputs,
                         XHR,
                         data = {},
-                        dataStr = '';
+                        dataStr = '',
+                        inputsJson;
 
                     data['ajax'] = 'Y';
                     dataStr = 'ajax=Y';
@@ -408,6 +446,9 @@
                         data[input] = inputs[input].value;
                         dataStr += '&' + input + '=' + encodeURIComponent(inputs[input].value)
                     }
+
+                    // inputsJson = JSON.stringify(inputs);
+                    // localStorage.setItem('fields', '');
 
                     if ("onload" in new XMLHttpRequest()) {
                         XHR = XMLHttpRequest;

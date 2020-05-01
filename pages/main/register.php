@@ -312,7 +312,7 @@ if ($writeOrder) {
 'Фамилия латиницей: ' . $arFields['last-name_lat']['value'] . "\r\n" .
 'Имя латиницей: ' . $arFields['first-name_lat']['value'] . "\r\n" .
 'Пол: ' . ($arFields['gender']['value'] === 'female'? 'Женский' : 'Мужской') . "\r\n" .
-'Дата рождения: ' . $arFields['birthdate-days']['value'] . '.' . ($arFields['birthdate-months']['value'] < 10 ? '0'.$arFields['birthdate-months']['value'] : $arFields['birthdate-months']['value']) . '.' . $arFields['birthdate-years']['value'] . "\r\n" .
+'Дата рождения: ' . $arFields['birthdate-days']['value'] . '.' . ($arFields['birthdate-months']['value'] < 10 ? ('0'.($arFields['birthdate-months']['value']+1)) : $arFields['birthdate-months']['value']) . '.' . $arFields['birthdate-years']['value'] . "\r\n" .
 'Семейное положение: ' . $arFields['marital-status']['value'] . "\r\n" .
 'Образование: ' . $_arFields['education']['value'] . "\r\n" .
 'Моб. телефон: ' . $arFields['phone']['value'] . "\r\n" .
