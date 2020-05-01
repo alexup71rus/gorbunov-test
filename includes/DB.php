@@ -45,7 +45,7 @@ class DB
     public function getAllUsers()
     {
         try {
-            $stmt = $this->pdo->query('SELECT * FROM orders');
+            $stmt = $this->pdo->query('SELECT * FROM orders ORDER BY date DESC');
             $data = $stmt->fetchAll();
 
             return $data;
