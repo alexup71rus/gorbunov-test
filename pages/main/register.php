@@ -201,7 +201,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'marital-status':
-                    if (!isset($_REQUEST[$itemName])) {
+                    if (!$_REQUEST[$itemName] || mb_strlen($_REQUEST[$itemName]) > 30) {
                         $itemContent['error'] = false;
                         $itemContent['text_error'] = 'Невернвый формат';
                     }

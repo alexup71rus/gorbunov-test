@@ -20,7 +20,7 @@ return [
     ],
     'users' => [
         'admin' => [
-            'password' => 'admin',
+            'password' => '123',
         ]
     ]
 ];

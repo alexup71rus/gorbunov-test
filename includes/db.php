@@ -42,6 +42,17 @@ class DB
     {
         return $this->pdo;
     }
+    public function getAllUsers()
+    {
+        try {
+            $stmt = $this->pdo->query('SELECT * FROM orders');
+            $data = $stmt->fetchAll();
+
+            return $data;
+        } catch (\Exception $exception) {
+            return $exception;
+        }
+    }
     public function registerUser(array $fields)
     {
         $data = [];
