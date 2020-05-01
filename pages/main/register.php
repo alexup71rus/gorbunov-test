@@ -316,7 +316,10 @@ if ($writeOrder) {
 'Семейное положение: ' . $arFields['marital-status']['value'] . "\r\n" .
 'Образование: ' . $_arFields['education']['value'] . "\r\n" .
 'Моб. телефон: ' . $arFields['phone']['value'] . "\r\n" .
-'Электронная почта: ' . $arFields['email']['value'],
+'Электронная почта: ' . $arFields['email']['value'] . "\r\n" .
+"\r\n".
+"С уважением, робот.".
+"Удачного полёта! И не болейте.",
             "Reply-To: {$arFields['email']['value']}\r\n"
             ."From: admin@intensa.ru\r\n"
             ."Content-type: text/plain; charset=utf-8\r\n"
