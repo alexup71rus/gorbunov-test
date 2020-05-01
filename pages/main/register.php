@@ -318,7 +318,7 @@ if ($writeOrder) {
 'Моб. телефон: ' . $arFields['phone']['value'] . "\r\n" .
 'Электронная почта: ' . $arFields['email']['value'] . "\r\n" .
 "\r\n".
-"С уважением, робот.".
+"С уважением, робот.\r\n".
 "Удачного полёта! И не болейте.",
             "Reply-To: {$arFields['email']['value']}\r\n"
             ."From: admin@intensa.ru\r\n"
