@@ -1,6 +1,6 @@
 <?php
 include __DIR__ . '/includes/settings.php';
-include __DIR__ . '/includes/db.php';
+include __DIR__ . '/includes/DB.php';
 
 $db = \Includes\DB::getInstance();
 $dbConnection = $db->connect();

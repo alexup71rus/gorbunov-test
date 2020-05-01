@@ -2,3 +2,4 @@
 .htaccess
 /admin/.htpasswd
 /admin/.htaccess
+settings.php

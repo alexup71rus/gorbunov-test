@@ -18,9 +18,4 @@ return [
             'db' => 'bureau',
         ],
     ],
-//    'users' => [
-//        'admin' => [
-//            'password' => '123',
-//        ]
-//    ]
 ];
