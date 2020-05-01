@@ -93,7 +93,7 @@ if (count($_REQUEST)) {
 
             switch ($itemName) {
                 case 'last-name':
-                    if ( preg_match('/[^\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[А-ЯЁа-яё -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод кириллицей, дефис и пробел';
@@ -105,7 +105,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'old-last-name':
-                    if ( preg_match('/[^\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[А-ЯЁа-яё -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод кириллицей, дефис и пробел';
@@ -116,7 +116,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'first-name':
-                    if ( preg_match('/[^\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[А-ЯЁа-яё -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод кириллицей, дефис и пробел';
@@ -127,7 +127,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'patronymic':
-                    if ( preg_match('/[^\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[А-ЯЁа-яё -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод кириллицей, дефис и пробел';
@@ -138,7 +138,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'last-name_lat':
-                    if ( preg_match('/[\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[A-Za-z -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод только латиницей';
@@ -149,7 +149,7 @@ if (count($_REQUEST)) {
                     break;
 
                 case 'first-name_lat':
-                    if ( preg_match('/[\w\-]/', $_REQUEST[$itemName]) === 0 )
+                    if ( preg_match_all('/[A-Za-z -]/', $_REQUEST[$itemName]) === 0 )
                     {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Допускается ввод только латиницей';
@@ -242,7 +242,7 @@ if (count($_REQUEST)) {
 
                 case 'phone':
                     if (
-                        preg_match('/\+7 [\d \-]/', $_REQUEST[$itemName]) === 0
+                        preg_match_all('/\+7 [\d \-]/', $_REQUEST[$itemName]) === 0
                         || mb_strlen($_REQUEST[$itemName]) > 16
                         || mb_strlen($_REQUEST[$itemName]) < 11
                     ) {
@@ -253,7 +253,7 @@ if (count($_REQUEST)) {
 
                 case 'email':
                     if (
-                        preg_match('/(.*(@).+)/', $_REQUEST[$itemName]) === 0
+                        preg_match_all('/(.*(@).+)/', $_REQUEST[$itemName]) === 0
                     ) {
                         $itemContent['error'] = true;
                         $itemContent['text_error'] = 'Не сможем связаться по этому адресу';

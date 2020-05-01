@@ -23,7 +23,7 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['last-name']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Фамилия</span>
                             <span class="js-form__item__content">
-                                <input class="<?= $arFields['last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="last-name" value="<?= $arFields['last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="last-name" value="<?= $arFields['last-name']['value'] ?>" pattern="[А-ЯЁа-яё -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['last-name']['text_error'] ?></span>
                             </span>
                         </label>
@@ -38,7 +38,7 @@ include __DIR__ . '/register.php';
                             <label class="js-form__item js-slide-hide" <?= $arFields['old-last-name']['error'] ? 'js-error' : '' ?>>
                                 <span class="js-form__item__label">Старая фамилия</span>
                                 <span class="js-form__item__content">
-                                    <input class="<?= $arFields['old-last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="old-last-name"  value="<?= $arFields['old-last-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}">
+                                    <input class="<?= $arFields['old-last-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="old-last-name"  value="<?= $arFields['old-last-name']['value'] ?>" pattern="[А-ЯЁа-яё -]{0,20}">
                                     <span class="js-field-error"><?= $arFields['old-last-name']['text_error'] ?></span>
                                 </span>
                             </label>
@@ -46,14 +46,14 @@ include __DIR__ . '/register.php';
                         <label class="js-form__item <?= $arFields['first-name']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Имя</span>
                             <span class="js-form__item__content">
-                                <input class="<?= $arFields['first-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="first-name" value="<?= $arFields['first-name']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['first-name']['error'] ? 'js-wrong' : '' ?>" type="text" name="first-name" value="<?= $arFields['first-name']['value'] ?>" pattern="[А-ЯЁа-яё -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['first-name']['text_error'] ?></span>
                             </span>
                         </label>
                         <label class="js-form__item <?= $arFields['patronymic']['error'] ? 'js-error' : '' ?>">
                             <span class="js-form__item__label">Отчество</span>
                             <span class="js-form__item__content">
-                                <input class="<?= $arFields['patronymic']['error'] ? 'js-wrong' : '' ?>" type="text" name="patronymic" value="<?= $arFields['patronymic']['value'] ?>" pattern="[А-Яа-я -]{0,20}" requiredfalse>
+                                <input class="<?= $arFields['patronymic']['error'] ? 'js-wrong' : '' ?>" type="text" name="patronymic" value="<?= $arFields['patronymic']['value'] ?>" pattern="[А-ЯЁа-яё -]{0,20}" requiredfalse>
                                 <span class="js-field-error"><?= $arFields['patronymic']['text_error'] ?></span>
                             </span>
                         </label>

@@ -160,7 +160,7 @@
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     app.showError(this, [
                                         {
-                                            result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value)),
+                                            result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value.normalize('NFC'))),
                                             text: 'Не сможем связаться по этому адресу'
                                         },
                                     ]);
@@ -170,11 +170,11 @@
                             case 'first-name':
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (app.data.editedFirstName === false) {
-                                        app.data.inputs['first-name_lat'].value = helper.translit(this.value);
+                                        app.data.inputs['first-name_lat'].value = helper.translit(this.value.normalize('NFC'));
                                     }
                                     app.showError(this, [
                                         {
-                                            result: /[^А-Яа-я -]/.test(this.value),
+                                            result: /[^А-ЯЁа-яё -]/.test(this.value),
                                             text: 'Допускается ввод кириллицей, дефис и пробел'
                                         },
                                         {
@@ -188,11 +188,11 @@
                             case 'last-name':
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     if (app.data.editedLastName === false) {
-                                        app.data.inputs['last-name_lat'].value = helper.translit(this.value);
+                                        app.data.inputs['last-name_lat'].value = helper.translit(this.value.normalize('NFC'));
                                     }
                                     app.showError(this, [
                                         {
-                                            result: /[^А-Яа-я -]/.test(this.value),
+                                            result: /[^А-ЯЁа-яё -]/.test(this.value.normalize('NFC')),
                                             text: 'Допускается ввод кириллицей, дефис и пробел'
                                         },
                                         {
@@ -207,7 +207,7 @@
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     app.showError(this, [
                                         {
-                                            result: /[^А-Яа-я -]/.test(this.value),
+                                            result: /[^А-ЯЁа-яё -]/.test(this.value.normalize('NFC')),
                                             text: 'Допускается ввод кириллицей, дефис и пробел'
                                         },
                                         {
@@ -233,7 +233,7 @@
                                             text: 'Вы превысили максимальное значение поля в 25 символов'
                                         },
                                         {
-                                            result: ( (this.value.length > 0) && /[^A-Za-z -]/g.test(this.value)),
+                                            result: ( (this.value.length > 0) && /[^A-Za-z -]/g.test(this.value.normalize('NFC'))),
                                             text: 'Допускается ввод только латиницей'
                                         },
                                     ]);
@@ -250,7 +250,7 @@
                                                 text: 'Вы превысили максимальное значение поля в 25 символов'
                                             },
                                             {
-                                                result: ( (this.value.length > 0) && /[^A-Za-z -]/g.test(this.value)),
+                                                result: ( (this.value.length > 0) && /[^A-Za-z -]/g.test(this.value.normalize('NFC'))),
                                                 text: 'Допускается ввод только латиницей'
                                             },
                                         ]);
@@ -321,7 +321,7 @@
                                             text: 'Вы превысили максимальное значение поля в 25 символов'
                                         },
                                         {
-                                            result: ( (this.value.length > 0) && /[^А-Яа-я -]/.test(this.value)),
+                                            result: ( (this.value.length > 0) && /[^А-ЯЁа-яё -]/.test(this.value)),
                                             text: 'Допускается ввод только латиницей'
                                         },
                                     ]);
