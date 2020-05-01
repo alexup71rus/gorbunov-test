@@ -1,3 +1,4 @@
 .idea
 .htaccess
 /admin/.htpasswd
+/admin/.htaccess
