@@ -410,8 +410,14 @@
                     localStorage.setItem('fields', JSON.stringify(data));
                 },
                 restoreForm: function () {
-                    var fieldsJson = localStorage.getItem('fields') || '',
+                    var fieldsJson = localStorage.getItem('fields'),
+                        fields = {};
+                    try {
                         fields = JSON.parse(fieldsJson);
+                    } catch (e) {
+
+                    }
+
                     for (var input in app.data.inputs) {
                         if (typeof fields[input] !== "undefined") {
                             switch (input) {
@@ -427,8 +433,6 @@
                                     }
                                     break;
                             }
-                            console.log(input);
-                            // input[input].value = fields[input];
                         }
                     }
                 },
