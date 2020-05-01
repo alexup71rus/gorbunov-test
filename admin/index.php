@@ -41,7 +41,7 @@ $tableRegistration = $db->getAllUsers();
         foreach ($tableRegistration as $registration)
         {
             ?><tr>
-            <td><?= $registration['date']; ?></td>
+            <td><?= date('d.m.Y', $registration['date']); ?></td>
             <td><?= $registration['last_name']; ?></td>
             <td><?= $registration['old_last_name']; ?></td>
             <td><?= $registration['first_name']; ?></td>
