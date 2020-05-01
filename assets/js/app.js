@@ -72,6 +72,7 @@
                         querySelects = form.querySelectorAll('select'),
                         eachAll = [queryText, queryCheckbox, queryRadio, querySelects],
                         inputs = {};
+
                     if (objects === true) {
                         eachAll.forEach(function (e, i) {
                             e.forEach(function (e, i) {
@@ -128,6 +129,16 @@
                 */
                 bindForm: function (form) {
                     this.data.inputs = this.serializeForm(form, true);
+
+                    form.addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        app.validateForm();
+                    });
+
+                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
+
+                    this.restoreForm();
+
                     for (var key in this.data.inputs) {
                         switch (key) {
                             case 'phone':
@@ -389,22 +400,14 @@
                                 break;
                         }
                     }
-
-                    form.addEventListener("submit", function (e) {
-                        e.preventDefault();
-                        app.validateForm();
-                    });
-
-                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
-
-                    this.restoreForm();
                 },
                 saveForm: function () {
-                    var inputs = app.data.inputs,
-                        data = {};
+                    var data = {};
 
-                    for (var input in inputs) {
-                        data[input] = inputs[input].value;
+                    app.data.inputs = app.serializeForm(form, true);
+
+                    for (var input in app.data.inputs) {
+                        data[input] = app.data.inputs[input].value;
                     }
 
                     localStorage.setItem('fields', JSON.stringify(data));
@@ -428,8 +431,24 @@
                                 case 'first-name_lat':
                                 case 'phone':
                                 case 'email':
+                                case 'birthdate-days':
+                                case 'birthdate-months':
+                                case 'birthdate-years':
+                                case 'marital-status':
+                                case 'education':
                                     if (fields[input].length) {
                                         app.data.inputs[input].value = fields[input];
+                                    }
+                                    break;
+
+                                case 'gender':
+                                    document.querySelector('[name="gender"][value="'+fields[input]+'"]').click();
+                                    console.log(document.querySelector('#form').querySelectorAll('input[type="radio"]:checked'));
+                                    console.log(fields[input], app.data.gender);
+                                    if (app.data.gender) {
+                                        app.data.inputs['gender'].closest('.js-gender').classList.add('hidden');
+                                    } else {
+                                        app.data.inputs['gender'].closest('.js-gender').classList.remove('hidden');
                                     }
                                     break;
                             }
