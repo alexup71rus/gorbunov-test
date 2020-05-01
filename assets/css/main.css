@@ -102,7 +102,7 @@ h1 {
 .js-form__item select {
   padding: 4px 5px;
   min-height: 27px;
-  -webkit-appearance: menulist-button;
+  -webkit-appearance: none;
 }
 .js-form__item input {
   max-width: 305px;
