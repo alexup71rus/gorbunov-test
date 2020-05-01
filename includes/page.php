@@ -12,12 +12,9 @@ require_once "./routes/sitemap.php";
 class Router
 {
     /**
-     * Объект одиночки храниться в статичном поле класса. Это поле — массив, так
-     * как мы позволим нашему Одиночке иметь подклассы. Все элементы этого
-     * массива будут экземплярами кокретных подклассов Одиночки. Не волнуйтесь,
-     * мы вот-вот познакомимся с тем, как это работает.
+     * Объект одиночки храниться в статичном поле класса.
      */
-    private static $instances = [];
+    private static $instance = null;
 
     /**
      * Конструктор Одиночки всегда должен быть скрытым, чтобы предотвратить
@@ -51,7 +48,7 @@ class Router
      * Эта реализация позволяет вам расширять класс Одиночки, сохраняя повсюду
      * только один экземпляр каждого подкласса.
      */
-    public static function getInstance($map): Singleton
+    public static function getInstance($map)
     {
         $cls = static::class;
         if (!isset(self::$instances[$cls])) {
@@ -83,7 +80,7 @@ class Router
      * @param карта сайта
      * @return
      */
-    public function render(bool $generate = true, $content)
+    public function render($generate = true, $content)
     {
         if ($generate === true && $content) {
             $pageFile = Router::route($content);
