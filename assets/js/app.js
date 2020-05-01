@@ -415,7 +415,7 @@
                     try {
                         fields = JSON.parse(fieldsJson);
                     } catch (e) {
-
+                        console.log('Вы зашли на эту страницу впервые?');
                     }
 
                     for (var input in app.data.inputs) {
