@@ -278,6 +278,11 @@
                                         } else {
                                             selected = '';
                                         }
+
+                                        if (day < 10) {
+                                            day = '0' + day;
+                                        }
+
                                         itemsHTML += '<option value="'+day+'" '+selected+'>'+day+'</option>';
                                     }
 
@@ -376,17 +381,20 @@
                             if (resInputs.code === 23000) {
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
-                            } else {
-                                document.querySelector('#error-exeption').innerText = '';
-                                document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
-                            }
-
-                            if (resInputs.code === 2) {
+                            } else if (resInputs.code === 2) {
                                 document.querySelector('.js-form__item__content-footer').classList.add('hidden');
                                 document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
+                            } else if (resInputs.code === 0) {
+                                document.querySelector('#error-exeption').innerText = '';
+                                document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+                            } else {
+                                document.querySelector('#error-exeption').innerText = resInputs.message;
+                                document.querySelector('.js-form__item__content-footer').classList.add('js-error');
+                                console.error('code ' + resInputs.code, resInputs.message);
                             }
 
-                            console.error('code ' + resInputs.code, resInputs.message);
+
+
 
                             for (input in resInputs.body) {
                                 var inputElem = document.querySelector('[name="'+input+'"]');

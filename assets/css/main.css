@@ -103,6 +103,7 @@ h1 {
   padding: 4px 5px;
   min-height: 27px;
   height: 27px;
+  font-size: 13px;
 }
 .js-form__item input {
   max-width: 305px;

@@ -108,7 +108,7 @@ include __DIR__ . '/register.php';
 
                                     <?php for ($i = 1; $i <= $date['days']; $i++): ?>
 
-                                        <option value="<?= $i ?>" <?= (int) $arFields['birthdate-days']['value'] === $i ? 'selected' : '' ?>><?= $i ?></option>
+                                        <option value="<?= $i < 10 ? '0' . $i : $i ?>" <?= (int) $arFields['birthdate-days']['value'] === $i ? 'selected' : '' ?>><?= $i < 10 ? '0' . $i : $i ?></option>
 
                                     <?php endfor; ?>
 

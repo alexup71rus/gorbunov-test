@@ -303,7 +303,7 @@ if ($writeOrder) {
             'Заявка на полёт на Марс',
             "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".date("Y-m-d H:i")."
 Фамилия: " . $arFields['last-name']['value'],
-            "From: admin@khodyr.ru\r\n"
+            "Reply-To: {$arFields['email']['value']}\r\n"
             ."Content-type: text/plain; charset=utf-8\r\n"
             ."X-Mailer: PHP mail script"
         ); // kirill@intensa.ru
