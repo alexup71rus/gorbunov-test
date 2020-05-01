@@ -12,11 +12,12 @@ class Auth
 
         header('Cache-Control: no-cache, must-revalidate, max-age=0');
         $has_supplied_credentials = !(empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW']));
-        var_dump($has_supplied_credentials);
 
-        foreach ($users as $name => $user) {
-            if ($name == $_SERVER['PHP_AUTH_USER'] && $user['password'] == $_SERVER['PHP_AUTH_PW']) {
-                $needAuth = false;
+        if ($has_supplied_credentials) {
+            foreach ($users as $name => $user) {
+                if ($name == $_SERVER['PHP_AUTH_USER'] && $user['password'] == $_SERVER['PHP_AUTH_PW']) {
+                    $needAuth = false;
+                }
             }
         }
 
