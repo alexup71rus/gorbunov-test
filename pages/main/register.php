@@ -281,7 +281,7 @@ foreach ($arFields as $field) {
 
 if ($writeOrder) {
     $_arFields = $arFields;
-    $dateSend = date("Y-m-d H:i");
+    $dateSend = date("d.m.Y H:i");
 
     $db = \Includes\DB::getInstance();
     $dbConnection = $db->connect();
@@ -306,7 +306,7 @@ if ($writeOrder) {
             "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend."
 Фамилия: " . $arFields['last-name']['value'],
             "Reply-To: {$arFields['email']['value']}\r\n"
-            ."From: admin@localhost\r\n"
+            ."From: admin@intensa.ru\r\n"
             ."Content-type: text/plain; charset=utf-8\r\n"
             ."X-Mailer: PHP mail script"
         ); // kirill@intensa.ru
