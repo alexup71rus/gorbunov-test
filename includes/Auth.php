@@ -16,9 +16,11 @@ class Auth
         if ($has_supplied_credentials) {
             foreach ($users as $name => $user) {
                 if ($name == $_SERVER['PHP_AUTH_USER'] && $user['password'] == $_SERVER['PHP_AUTH_PW']) {
-                    $needAuth = false;
+                    exit;
                 }
             }
+        } else {
+            $needAuth = false;
         }
 
         if ($needAuth) {
