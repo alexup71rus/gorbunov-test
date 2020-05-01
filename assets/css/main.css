@@ -183,11 +183,11 @@ h1 {
   display: inline-block;
   padding: 13.8px 20px;
   margin-top: 20px;
-  max-width: 280px;
+  max-width: 279px;
   width: 100%;
   border: 0;
   border-radius: 18px;
-  background: #eee;
+  background: #dedee4;
   box-shadow: 0px 4px 7px rgba(37, 40, 57, 0.27);
   text-shadow: 0 1px 0 #fff;
   font-weight: 900;
@@ -196,21 +196,20 @@ h1 {
   color: #A1A2A7;
   cursor: pointer;
   pointer-events: none;
-  transition: .3s;
 }
 #form-registration .js-form__item__submit::before {
   content: '';
   display: block;
-  margin-top: -8px;
-  margin-bottom: -16.1px;
-  margin-left: -15px;
-  margin-right: -15px;
-  height: 24.3px;
+  margin-top: -11px;
+  margin-bottom: -14px;
+  margin-left: -17px;
+  margin-right: -17px;
+  height: 24px;
   border-radius: 100px;
-  background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
-  background-image:-moz-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .25) 60%);
+  background-image: linear-gradient(#EFEEF3, #E3E3E9);
+  background-image: -webkit-linear-gradient(#EFEEF3, #E3E3E9);
+  background-image: -moz-linear-gradient(#EFEEF3, #E3E3E9);
+  background-image: -o-linear-gradient(#EFEEF3, #E3E3E9);
 }
 
 .js-form__item-label-agree {
@@ -234,6 +233,9 @@ h1 {
   box-shadow: 0px 4px 7px rgba(37, 40, 57, 0.27);
   color: #000;
   pointer-events: all;
+}
+#form-item-final-chk:checked ~ #js-form-item-final-btn::before {
+  background: linear-gradient(#F3CA44, #F1D26E);
 }
 
 .js-field-error {
