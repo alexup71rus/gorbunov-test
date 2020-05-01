@@ -311,10 +311,10 @@ if ($writeOrder) {
 'Отчество: ' . $arFields['patronymic']['value'] . "\r\n" .
 'Фамилия латиницей: ' . $arFields['last-name_lat']['value'] . "\r\n" .
 'Имя латиницей: ' . $arFields['first-name_lat']['value'] . "\r\n" .
-'Пол: ' . $arFields['gender']['value'] . "\r\n" .
-'Дата рождения: ' . $arFields['birthdate-days']['value'] . ' ' . $arFields['birthdate-months']['value'] . ' ' . $arFields['birthdate-years']['value'] . "\r\n" .
+'Пол: ' . ($arFields['gender']['value'] === 'female'? 'Женский' : 'Мужской') . "\r\n" .
+'Дата рождения: ' . $arFields['birthdate-days']['value'] . '.' . ($arFields['birthdate-months']['value'] < 10 ? '0'.$arFields['birthdate-months']['value'] : $arFields['birthdate-months']['value']) . '.' . $arFields['birthdate-years']['value'] . "\r\n" .
 'Семейное положение: ' . $arFields['marital-status']['value'] . "\r\n" .
-'Образование: ' . $arFields['education']['value'] . "\r\n" .
+'Образование: ' . $_arFields['education']['value'] . "\r\n" .
 'Моб. телефон: ' . $arFields['phone']['value'] . "\r\n" .
 'Электронная почта: ' . $arFields['email']['value'],
             "Reply-To: {$arFields['email']['value']}\r\n"
