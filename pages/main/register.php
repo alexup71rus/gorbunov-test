@@ -304,18 +304,18 @@ if ($writeOrder) {
             'alexup71rus@gmail.com, kirill@intensa.ru',
             'Заявка на полёт на Марс',
             "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend.
-'Дата отправки формы: ' . date("d.m.Y H:i") . '\r\n' .
-'Фамилия: ' . $arFields['last-name']['value'] . '\r\n' .
-'Старая фамилия: ' . $arFields['last-name']['value'] . '\r\n' .
-'Имя: ' . $arFields['first-name']['value'] . '\r\n' .
-'Отчество: ' . $arFields['patronymic']['value'] . '\r\n' .
-'Фамилия латиницей: ' . $arFields['last-name_lat']['value'] . '\r\n' .
-'Имя латиницей: ' . $arFields['first-name_lat']['value'] . '\r\n' .
-'Пол: ' . $arFields['gender']['value'] . '\r\n' .
-'Дата рождения: ' . $arFields['birthdate-days']['value'] . ' ' . $arFields['birthdate-months']['value'] . ' ' . $arFields['birthdate-years']['value'] . '\r\n' .
-'Семейное положение: ' . $arFields['marital-status']['value'] . '\r\n' .
-'Образование: ' . $arFields['education']['value'] . '\r\n' .
-'Моб. телефон: ' . $arFields['phone']['value'] . '\r\n' .
+'Дата отправки формы: ' . date("d.m.Y H:i") . "\r\n" .
+'Фамилия: ' . $arFields['last-name']['value'] . "\r\n" .
+'Старая фамилия: ' . $arFields['last-name']['value'] . "\r\n" .
+'Имя: ' . $arFields['first-name']['value'] . "\r\n" .
+'Отчество: ' . $arFields['patronymic']['value'] . "\r\n" .
+'Фамилия латиницей: ' . $arFields['last-name_lat']['value'] . "\r\n" .
+'Имя латиницей: ' . $arFields['first-name_lat']['value'] . "\r\n" .
+'Пол: ' . $arFields['gender']['value'] . "\r\n" .
+'Дата рождения: ' . $arFields['birthdate-days']['value'] . ' ' . $arFields['birthdate-months']['value'] . ' ' . $arFields['birthdate-years']['value'] . "\r\n" .
+'Семейное положение: ' . $arFields['marital-status']['value'] . "\r\n" .
+'Образование: ' . $arFields['education']['value'] . "\r\n" .
+'Моб. телефон: ' . $arFields['phone']['value'] . "\r\n" .
 'Электронная почта: ' . $arFields['email']['value'],
             "Reply-To: {$arFields['email']['value']}\r\n"
             ."From: admin@intensa.ru\r\n"
