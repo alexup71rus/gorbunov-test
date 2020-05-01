@@ -260,6 +260,15 @@
                                 });
                                 break;
 
+                            case 'birthdate-days':
+                                // app.showError(this, [
+                                //     {
+                                //         result: (!app.data.inputs['birthdate-days'].value),
+                                //         text: 'Поле не заполнено'
+                                //     },
+                                // ]);
+                                break;
+
                             case 'birthdate-months':
                             case 'birthdate-years':
                                 this.data.inputs[key].addEventListener("change", function (e) {
@@ -288,6 +297,42 @@
 
                                     app.data.inputs['birthdate-days'].innerHTML = itemsHTML;
 
+                                    app.showError(app.data.inputs['birthdate-months'], [
+                                        {
+                                            result: (!app.data.inputs['birthdate-months'].value),
+                                            text: 'Поле не заполнено'
+                                        },
+                                    ]);
+
+                                    app.showError(app.data.inputs['birthdate-years'], [
+                                        {
+                                            result: (!app.data.inputs['birthdate-years'].value),
+                                            text: 'Поле не заполнено'
+                                        },
+                                    ]);
+
+                                });
+                                break;
+
+                            case 'marital-status':
+                                this.data.inputs[key].addEventListener("change", function (e) {
+                                    app.showError(this, [
+                                        {
+                                            result: (!app.data.inputs['marital-status'].value),
+                                            text: 'Поле не заполнено'
+                                        },
+                                    ]);
+                                });
+                                break;
+
+                            case 'education':
+                                this.data.inputs[key].addEventListener("change", function (e) {
+                                    app.showError(this, [
+                                        {
+                                            result: (!app.data.inputs['education'].value),
+                                            text: 'Поле не заполнено'
+                                        },
+                                    ]);
                                 });
                                 break;
 
