@@ -1,5 +1,6 @@
 * {
   font-family: Arial, 'Roboto', 'sans-serif';
+  outline: none;
 }
 .clearfix::after {
   content: '';
@@ -58,7 +59,7 @@ h1 {
 /* sidebar */
 
 .sidebar {
-  width: 175px;
+  width: 174px;
 }
 .r-sidebar {
   float: right;
@@ -127,6 +128,7 @@ h1 {
 .form-item__label-check {
   margin-left: 18px;
   max-width: 316px;
+  line-height: 19px;
 }
 .js-form__item input[type="radio"] {
   display: inline-block;
@@ -206,7 +208,6 @@ h1 {
 .js-form__item-label-agree {
   display: inline-block;
   margin-left: 20px;
-  padding: 2px 0 0;
   max-width: 316px;
   min-width: 155px;
   font-size: 13px;
