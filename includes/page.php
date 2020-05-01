@@ -1,5 +1,5 @@
 <?php
-require_once "./routes/sitemap.php";
+require_once realpath(__DIR__ . '/../routes/sitemap.php');
 
 
 /**
@@ -88,7 +88,7 @@ class Router
                 return $_SERVER['DOCUMENT_ROOT'] . '/pages/' . $pageFile .  '/index.php';
             } else {
                 header('HTTP/1.1 502 Bad Gateway');
-                return $_SERVER['DOCUMENT_ROOT'] . '/pages/502/index.php';
+                return realpath(__DIR__ . '/../pages/502/index.php');
             }
         } elseif ($generate === false && $content) {
             return $_SERVER['DOCUMENT_ROOT'] . '/pages/' . $content .  '/index.php';
@@ -103,7 +103,7 @@ class Router
      */
     public function requireHeader($template, $requires)
     {
-        require $_SERVER['DOCUMENT_ROOT'] . '/templates/' . $template . '/header.php';
+        require realpath(__DIR__ . '/../templates/' . $template . '/header.php');
 
         return true;
     }
@@ -115,7 +115,7 @@ class Router
      */
     public function requireFooter($template, $requires)
     {
-        require './templates/' . $template . '/footer.php';
+        require realpath(__DIR__ . '/../templates/' . $template . '/footer.php');
 
         return true;
     }
