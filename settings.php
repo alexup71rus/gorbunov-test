@@ -11,7 +11,7 @@ return [
             'db' => 'bureau',
         ],
         'production' => [
-            'host' => 'bureau.intensa-dev.ru',
+            'host' => 'localhost',
             'port' => 3306,
             'login' => 'bureau',
             'pass' => 'PvlZRgHc',
