@@ -297,6 +297,16 @@ if ($writeOrder) {
             'message' => 'Регистрация прошла успешно',
             'body' => [],
         ];
+
+        mail(
+            $arFields['email']['value'],
+            'Заявка на полёт на Марс',
+            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".date("Y-m-d H:i")."
+Фамилия: " . $arFields['last-name']['value'],
+            "From: admin@khodyr.ru\r\n"
+            ."Content-type: text/plain; charset=utf-8\r\n"
+            ."X-Mailer: PHP mail script"
+        ); // kirill@intensa.ru
     } elseif ($res->getCode() === '23000') {
         $response = [
             'code' => 23000,
@@ -312,9 +322,8 @@ if ($writeOrder) {
     }
 }
 
-
 if ($isAjax) {
-    @header('Content-Type: application/json');
+//    @header('Content-Type: application/json');
 
     if ($response['code'] === 0) {
         die(json_encode($response = [
