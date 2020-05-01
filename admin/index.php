@@ -19,14 +19,12 @@ $tableRegistration = $db->getAllUsers();
 
 ?>
 <table>
-    <caption>Регистрации</caption>
-    <thead class="t-header">
+    <thead>
         <tr>
-            <td>Телефон</td>
-            <td>Емайл</td>
-            <td>Имя</td>
+            <td>Дата</td>
             <td>Фамилия</td>
             <td>Старая фамилия</td>
+            <td>Имя</td>
             <td>Отчество</td>
             <td>Фамилия латиницей</td>
             <td>Имя латинице</td>
@@ -34,27 +32,28 @@ $tableRegistration = $db->getAllUsers();
             <td>Дата рождения</td>
             <td>Семейное положение</td>
             <td>Образование</td>
+            <td>Телефон</td>
+            <td>Емайл</td>
         </tr>
     </thead>
     <tbody>
         <?php
-//        var_dump($tableRegistration);
-
         foreach ($tableRegistration as $registration)
         {
             ?><tr>
-            <td><?= $registration['phone']; ?></td>
-            <td><?= $registration['email']; ?></td>
-            <td><?= $registration['first_name']; ?></td>
+            <td><?= $registration['date']; ?></td>
             <td><?= $registration['last_name']; ?></td>
             <td><?= $registration['old_last_name']; ?></td>
+            <td><?= $registration['first_name']; ?></td>
             <td><?= $registration['patronymic']; ?></td>
             <td><?= $registration['last_name_lat']; ?></td>
             <td><?= $registration['first_name_lat']; ?></td>
-            <td><?= $registration['gender']; ?></td>
-            <td><?= $registration['birthdate_days']; ?>.<?= $registration['birthdate_months']; ?>.<?= $registration['birthdate_years']; ?></td>
+            <td><?= $registration['gender'] === 'female'? 'Женский' : 'Мужской' ; ?></td>
+            <td><?= $registration['birthdate_days']; ?> <?= $registration['birthdate_months']; ?> <?= $registration['birthdate_years']; ?></td>
             <td><?= $registration['marital_status']; ?></td>
             <td><?= $registration['education']; ?></td>
+            <td><?= $registration['phone']; ?></td>
+            <td><?= $registration['email']; ?></td>
             </tr><?
         }
         ?>

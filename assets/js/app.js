@@ -434,10 +434,10 @@
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
                             } else if (resInputs.code === 0 || resInputs.code === 2) {
-                                document.querySelector('.js-form__item__content-footer').classList.add('hidden');
-                                document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
-                                document.querySelector('#error-exeption').innerText = '';
-                                document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+                                // document.querySelector('.js-form__item__content-footer').classList.add('hidden');
+                                // document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
+                                // document.querySelector('#error-exeption').innerText = '';
+                                // document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
                             } else {
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
@@ -473,7 +473,12 @@
                 },
                 changeGender: function (genderVal) {
                     var sp = window.arSP,
-                        itemsHTML = '';
+                        itemsHTML = '',
+                        elementRadio = document.querySelector('input[type="radio"][value="'+genderVal+'"]');
+
+                    if (elementRadio) {
+                        elementRadio.checked = true;
+                    }
 
                     for (var gender in sp) {
                         if (gender === genderVal || gender === 'for_all') {

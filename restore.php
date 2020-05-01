@@ -10,6 +10,7 @@ try {
     $dbConnection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
     $sql ="CREATE TABLE IF NOT EXISTS $table(
      `phone` VARCHAR( 255 ) NOT NULL PRIMARY KEY,
+     `date` VARCHAR( 255 ) NOT NULL,
      `email` VARCHAR( 255 ) NOT NULL,
      `first_name` VARCHAR( 255 ) NOT NULL,
      `last_name` VARCHAR( 255 ) NOT NULL,

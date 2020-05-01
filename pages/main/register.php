@@ -281,11 +281,13 @@ foreach ($arFields as $field) {
 
 if ($writeOrder) {
     $_arFields = $arFields;
+    $dateSend = date("Y-m-d H:i");
 
     $db = \Includes\DB::getInstance();
     $dbConnection = $db->connect();
 
     unset($_arFields['agree']);
+    $_arFields['date']['value'] = $dateSend;
     $_arFields['birthdate-months']['value'] = $date['months'][ (int) $arFields['birthdate-months']['value'] ];
     $_arFields['education']['value'] = $education[ (int) $arFields['education']['value'] ];
 
@@ -301,9 +303,10 @@ if ($writeOrder) {
         mail(
             'alexup71rus@gmail.com, kirill@intensa.ru',
             'Заявка на полёт на Марс',
-            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".date("Y-m-d H:i")."
+            "Добрый день!\r\nС сайта {$_SERVER['HTTP_HOST']} отправлена заявка на полёт на Марс.\r\n\r\nДата заявки: ".$dateSend."
 Фамилия: " . $arFields['last-name']['value'],
             "Reply-To: {$arFields['email']['value']}\r\n"
+            ."From: admin@localhost\r\n"
             ."Content-type: text/plain; charset=utf-8\r\n"
             ."X-Mailer: PHP mail script"
         ); // kirill@intensa.ru

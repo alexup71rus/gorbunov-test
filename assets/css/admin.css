@@ -1,7 +1,35 @@
-table {
-  width: 100%;
+* {
+  font-family: Arial, 'Roboto', 'sans-serif';
+  outline: none;
+}
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.hidden {
+  display: none !important;
 }
 
-.t-header {
-  background-color: #ddd;
+/**/
+
+body {
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  min-width: 1600px;
+}
+
+thead {
+  font-weight: bold;
+}
+thead td {
+  padding-bottom: 20px;
+}
+
+td {
+  padding: 3px;
+  font-size: 13px;
 }
