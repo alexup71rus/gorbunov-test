@@ -269,9 +269,12 @@ if (count($_REQUEST)) {
 }
 
 $writeOrder = true;
-
+//$itemContent['required'] === false || (isset($_REQUEST[$itemName]) && mb_strlen($_REQUEST[$itemName]))
 foreach ($arFields as $field) {
-    if ($field['error']) {
+    if (
+        $field['error']
+        || ($field['required'] === true && strlen($field['value']) === 0)
+    ) {
         $writeOrder = false;
     }
 }
