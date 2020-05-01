@@ -389,7 +389,7 @@
                                 break;
 
                             case 'submit':
-                                this.data.inputs[key].addEventListener("click", function (e) {
+                                form.addEventListener("submit", function (e) {
                                     console.log(app.validateForm());
                                     return false;
                                 });
