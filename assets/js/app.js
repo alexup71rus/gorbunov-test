@@ -138,6 +138,7 @@
                     form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
 
                     this.restoreForm();
+                    this.saveForm();
 
                     for (var key in this.data.inputs) {
                         switch (key) {
@@ -401,7 +402,7 @@
                         }
                     }
                 },
-                saveForm: function () {
+                saveForm: async function () {
                     var data = {};
 
                     app.data.inputs = app.serializeForm(form, true);
