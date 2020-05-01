@@ -1,5 +1,5 @@
 <?php
-require_once realpath(__DIR__ . '/../routes/sitemap.php');
+require_once realpath(__DIR__ . '/../routes/Sitemap.php');
 
 
 /**

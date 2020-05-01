@@ -1,5 +1,5 @@
 <?php
-include __DIR__ . '/includes/settings.php';
+include __DIR__ . '/includes/Settings.php';
 include __DIR__ . '/includes/DB.php';
 
 $db = \Includes\DB::getInstance();

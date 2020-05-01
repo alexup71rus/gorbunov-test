@@ -1,14 +1,9 @@
 <?php
-require_once realpath(__DIR__ . '/../includes/settings.php'); // Настрйоки
+require_once realpath(__DIR__ . '/../includes/Settings.php'); // Настрйоки
 require_once __DIR__ . "/../includes/helpers.php"; // Функции помощники
-require_once __DIR__ . "/../includes/db.php"; // Работа с базой
-require_once __DIR__ . "/../routes/sitemap.php"; // Карта сайта
+require_once __DIR__ . "/../includes/DB.php"; // Работа с базой
+require_once __DIR__ . "/../routes/Sitemap.php"; // Карта сайта
 require_once __DIR__ . "/../includes/page.php"; // Роутинг страниц
-//require_once './includes/Auth.php';
-
-//$auth = new \Includes\Auth();
-//$isAuth = $auth->needAuth('admin', '123');
-
 
 \Router::requireHeader('main_theme', [
     'css' => [

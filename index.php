@@ -1,8 +1,8 @@
 <?php
-require_once "./includes/settings.php"; // Настрйоки
+require_once "./includes/Settings.php"; // Настрйоки
 require_once "./includes/helpers.php"; // Функции помощники
 require_once "./includes/DB.php"; // Работа с базой
-require_once "./routes/sitemap.php"; // Карта сайта
+require_once "./routes/Sitemap.php"; // Карта сайта
 require_once "./includes/page.php"; // Роутинг страниц
 
 $sitemap = new \Routes\Sitemap();
