@@ -270,6 +270,7 @@ h1 {
 
 #error-exeption {
   margin-left: calc(50% + 120px);
+  left: 0;
 }
 
 
