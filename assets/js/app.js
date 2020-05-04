@@ -338,7 +338,6 @@
                                     app.showError(this, [
                                         {
                                             result: false, //  (!app.data.inputs['marital-status'].value),
-                                            text: 'Поле не заполнено'
                                         },
                                     ]);
                                 });
@@ -470,9 +469,6 @@
                         data[input] = inputs[input].value;
                         dataStr += '&' + input + '=' + encodeURIComponent(inputs[input].value)
                     }
-
-                    // inputsJson = JSON.stringify(inputs);
-                    // localStorage.setItem('fields', '');
 
                     if ("onload" in new XMLHttpRequest()) {
                         XHR = XMLHttpRequest;
