@@ -213,6 +213,18 @@ h1 {
   background-image: -o-linear-gradient(#EFEEF3, #E3E3E9);
 }
 
+.js-submit-disibled {
+  background: #dedee4 !important;
+  color: #A1A2A7 !important;
+  pointer-events: none !important;
+}
+.js-submit-disibled::before {
+  background-image: linear-gradient(#EFEEF3, #E3E3E9) !important;
+  background-image: -webkit-linear-gradient(#EFEEF3, #E3E3E9) !important;
+  background-image: -moz-linear-gradient(#EFEEF3, #E3E3E9) !important;
+  background-image: -o-linear-gradient(#EFEEF3, #E3E3E9) !important;
+}
+
 .js-form__item-label-agree {
   display: inline-block;
   margin-left: 20px;
@@ -306,5 +318,63 @@ h1 {
   }
   .r-sidebar {
     display: none;
+  }
+}
+
+
+@media screen and (max-width: 680px) {
+  body {
+    margin: 0;
+    min-width: 320px;
+  }
+
+  .js-form__item__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  #form {
+    margin: 0 auto;
+  }
+
+  #form, h1 {
+    max-width: 440px;
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0.67em auto;
+  }
+
+  .form__container, .form__container_footer {
+    max-width: 400px;
+    width: calc(100% - 40px);
+  }
+
+  .js-form__item__content-footer {
+    margin: 10px auto 10px auto;
+  }
+
+  #form-registration .js-form__item__submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .js-form__item-container h3 {
+    margin: 10px 0 10px 0;
+  }
+
+  .js-form__item input {
+    max-width: calc(100% - 10px);
+  }
+
+  #form-registration #form-item-cln-chk:checked ~ .js-slide-hide {
+    height: 50px;
+  }
+
+  .js-form__item__content-footer {
+    max-width: 335px;
+    width: 100%;
   }
 }

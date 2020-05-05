@@ -328,7 +328,7 @@ if ($writeOrder) {
     } elseif ($res->getCode() === '23000') {
         $response = [
             'code' => 23000,
-            'message' => 'Человек с таким телефоном уже зарегистрирован',
+            'message' => 'Ошибка добавления в базу',
             'body' => [],
         ];
     } else {

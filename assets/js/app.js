@@ -124,6 +124,27 @@
                         return false;
                     }
                 },
+                bindOnChange: async function (form) {
+                    var allInputsValid = true;
+
+                    if (Object.keys(app.data.invalidFields).length) {
+                        allInputsValid = false;
+                    } else {
+                        for (var input in app.data.inputs) {
+                            if (app.data.inputs[input].value.length === 0 && app.data.inputs[input].required) {
+                                allInputsValid = false;
+                            }
+                        }
+                    }
+
+                    if (allInputsValid === true) {
+                        document.querySelector('.js-form__item__submit').classList.remove('js-submit-disibled');
+                    } else {
+                        document.querySelector('.js-form__item__submit').classList.add('js-submit-disibled');
+                    }
+
+                    app.saveForm();
+                },
                 /*
                 * привязка событий (и условия событий, не стал выносить)
                 */
@@ -135,7 +156,9 @@
                         app.validateForm();
                     });
 
-                    form.addEventListener("click", app.saveForm), form.addEventListener("keyup", app.saveForm);
+                    // this.selectSelect(); // раскрытие селектов не работает в современных браузерах по соображениям безопасности
+
+                    form.addEventListener("click", app.bindOnChange), form.addEventListener("keyup", app.bindOnChange);
 
                     this.restoreForm();
                     this.saveForm();
@@ -147,13 +170,6 @@
 
                                 this.data.inputs[key].addEventListener("keyup", function (e) {
                                     helper.mask(e, this, matrix);
-
-                                    app.showError(this, [
-                                        {
-                                            result: (this.value.length > 16),
-                                            text: 'Только цифры, до 16 символов'
-                                        },
-                                    ]);
                                 });
 
                                 this.data.inputs[key].addEventListener("click", function () {
@@ -164,11 +180,22 @@
                                 this.data.inputs[key].addEventListener("blur", function () {
                                     if (this.value === '+7 ' || this.value === '+7') {
                                         this.value = '';
+                                        app.showError(this, [
+                                            {
+                                                result: false,
+                                            },
+                                        ]);
                                     } else if (this.value.length < 16) {
                                         app.showError(this, [
                                             {
                                                 result: ( (this.value.length > 0) && !/(.*(@).+)/g.test(this.value.normalize('NFC'))),
                                                 text: 'Только цифры, до 16 символов'
+                                            },
+                                        ]);
+                                    } else if (this.value.length === 16) {
+                                        app.showError(this, [
+                                            {
+                                                result: false,
                                             },
                                         ]);
                                     }
@@ -318,7 +345,7 @@
 
                                     app.showError(app.data.inputs['birthdate-months'], [
                                         {
-                                            result: (!app.data.inputs['birthdate-months'].value),
+                                            result: false, // (!app.data.inputs['birthdate-months'].value),
                                             text: 'Поле не заполнено'
                                         },
                                     ]);
@@ -337,7 +364,8 @@
                                 this.data.inputs[key].addEventListener("change", function (e) {
                                     app.showError(this, [
                                         {
-                                            result: false, //  (!app.data.inputs['marital-status'].value),
+                                            result: (!app.data.inputs['marital-status'].value), //  (!app.data.inputs['marital-status'].value),
+                                            text: 'Поле не заполнено'
                                         },
                                     ]);
                                 });
@@ -401,18 +429,21 @@
                         }
                     }
                 },
-                saveForm: async function () {
+                saveForm: async function (clear) {
                     var data = {};
 
                     app.data.inputs = app.serializeForm(form, true);
 
                     for (var input in app.data.inputs) {
+                        if (clear === true) {
+                            app.data.inputs[input].value = '';
+                        }
                         data[input] = app.data.inputs[input].value;
                     }
 
                     localStorage.setItem('fields', JSON.stringify(data));
                 },
-                restoreForm: function () {
+                restoreForm: async function () {
                     var fieldsJson = localStorage.getItem('fields'),
                         fields = {};
                     try {
@@ -442,13 +473,13 @@
                                     break;
 
                                 case 'gender':
-                                    document.querySelector('[name="gender"][value="'+fields[input]+'"]').click();
-                                    console.log(document.querySelector('#form').querySelectorAll('input[type="radio"]:checked'));
-                                    console.log(fields[input], app.data.gender);
-                                    if (app.data.gender) {
-                                        app.data.inputs['gender'].closest('.js-gender').classList.add('hidden');
-                                    } else {
-                                        app.data.inputs['gender'].closest('.js-gender').classList.remove('hidden');
+                                    if (fields[input]) {
+                                        document.querySelector('[name="gender"][value="'+fields[input]+'"]').click();
+                                        if (app.data.gender) {
+                                            app.data.inputs['gender'].closest('.js-gender').classList.add('hidden');
+                                        } else {
+                                            app.data.inputs['gender'].closest('.js-gender').classList.remove('hidden');
+                                        }
                                     }
                                     break;
                             }
@@ -488,11 +519,19 @@
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
                             } else if (resInputs.code === 0) {
-                            } else if (resInputs.code === 0 || resInputs.code === 2) {
+                            } else if (resInputs.code === 2) {
                                 document.querySelector('.js-form__item__content-footer').classList.add('hidden');
                                 document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
                                 document.querySelector('#error-exeption').innerText = '';
                                 document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
+                                app.saveForm(true);
+                                for (var input in app.data.inputs) {
+                                    app.data.inputs[input].disabled = true;
+                                    console.log(app.data.inputs[input]);
+                                }
+                                document.querySelector('[name="gender"]').disabled = true;
+                                document.querySelector('#form-item-cln-chk').disabled = true;
+
                             } else {
                                 document.querySelector('#error-exeption').innerText = resInputs.message;
                                 document.querySelector('.js-form__item__content-footer').classList.add('js-error');
@@ -545,6 +584,28 @@
 
                     app.data.inputs['marital-status'].innerHTML = itemsHTML;
                 },
+                // selectSelect: function (genderVal) { // раскрытие селектов не работает в современных браузерах по соображениям безопасности
+                //     var selectors = [],
+                //         items = document.querySelectorAll('.js-form__item');
+                //
+                //     items.forEach(function (item) {
+                //         var selects;
+                //         // selectors.push(item.querySelectorAll('select'));
+                //
+                //         if (selects = item.querySelectorAll('select')) {
+                //             item.addEventListener('mouseup', function (e) {
+                //                 if (e.target.classList.contains('js-form__item__label') || e.target.classList.contains('js-form__item')) {
+                //                     this.querySelectorAll('select').forEach(function (select) {
+                //                         console.log(select.value);
+                //                         if (!select.value) {
+                //                             select.click();
+                //                         }
+                //                     })
+                //                 }
+                //             });
+                //         }
+                //     });
+                // },
             };
 
         app.init();
