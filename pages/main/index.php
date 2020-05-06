@@ -26,7 +26,7 @@ include __DIR__ . '/register.php';
     <!-- /Yandex.Metrika counter -->
 
     <div class="container">
-        <h1>Заявка наа&nbsp;экскурсионный полёт на&nbsp;Марс</h1>
+        <h1>Заявка на&nbsp;экскурсионный полёт на&nbsp;Марс</h1>
     </div>
 </header>
 <section id="form-registration">
