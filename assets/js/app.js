@@ -454,7 +454,7 @@
                     }
 
                     for (var input in app.data.inputs) {
-                        if (typeof fields[input] !== "undefined") {
+                        if (fields && typeof fields[input] !== "undefined") {
                             switch (input) {
                                 case 'last-name':
                                 case 'first-name':
