@@ -343,7 +343,9 @@ h1 {
   }
 
   h1 {
+    box-sizing: border-box;
     margin: 0.67em auto;
+    padding: 0 10px;
   }
 
   .form__container, .form__container_footer {
