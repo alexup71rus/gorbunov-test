@@ -377,4 +377,17 @@ h1 {
     max-width: 335px;
     width: 100%;
   }
+
+  .js-field-error {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 0;
+    width: calc(100% - 22px);
+    border-radius: 0;
+    height: auto;
+  }
+  .js-field-error::after {
+    display: none;
+  }
 }

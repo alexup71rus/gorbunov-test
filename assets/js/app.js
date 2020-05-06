@@ -162,6 +162,7 @@
 
                     this.restoreForm();
                     this.saveForm();
+                    // this.validateForm();
 
                     for (var key in this.data.inputs) {
                         switch (key) {
