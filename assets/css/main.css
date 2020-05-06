@@ -390,4 +390,9 @@ h1 {
   .js-field-error::after {
     display: none;
   }
+
+  #error-exeption {
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }
