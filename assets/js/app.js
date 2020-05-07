@@ -54,21 +54,20 @@
 
                     return element.value;
                 },
-                typewriter: function (objs, str) {
+                typewriter: function (objs) {
                     objs.forEach(function (obj) {
-                        var countStr = 0,
+                        var countStr = 1,
                             keyInterval,
-                            height = obj.offsetHeight;
-                        obj.textContent = '';
-                        obj.style.display = 'block';
-                        obj.style.height = height + 'px';
+                            contentLength = obj.textContent.length,
+                            str = obj.textContent;
+                        // obj.textContent = '';
                         keyInterval = setInterval(function () {
-                            if (obj.textContent.length < str.length) {
-                                obj.textContent = str.substr(0, countStr+1) + '|';
-                                countStr++;
+                            console.log(contentLength, countStr);
+                            if (countStr < contentLength) {
+                                obj.innerHTML = str.substr(0, countStr)
+                                    + '<span style="color: white">' + str.substr(countStr, contentLength) + '</span>';
+                                countStr++; // innerHTML textContent
                             } else {
-                                obj.textContent = str.substr(0, countStr+1);
-                                obj.style.height = 'auto';
                                 clearInterval(keyInterval);
                             }
 
