@@ -63,7 +63,7 @@
 
                         keyInterval = setInterval(function () {
                             if (countStr < 0) {
-                                obj.style.display = 'block';
+                                obj.style.opacity = '1';
                             }
                             if (countStr < contentLength) {
                                 obj.innerHTML = str.substr(0, countStr + 1)

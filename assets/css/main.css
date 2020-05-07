@@ -20,7 +20,7 @@
 }
 
 .typewriter {
-  display: none;
+  opacity: 0;
 }
 
 /* page */

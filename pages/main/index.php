@@ -12,7 +12,7 @@ include __DIR__ . '/register.php';
 <noscript>
     <style>
         .typewriter {
-            display: block !important;
+            opacity: 1 !important;
         }
     </style>
 </noscript>
