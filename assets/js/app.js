@@ -64,8 +64,8 @@
                         keyInterval = setInterval(function () {
                             console.log(contentLength, countStr);
                             if (countStr < contentLength) {
-                                obj.innerHTML = str.substr(0, countStr)
-                                    + '<span style="color: white">' + str.substr(countStr, contentLength) + '</span>';
+                                obj.innerHTML = str.substr(0, countStr + 1)
+                                    + '<span style="color: white">' + str.substr(countStr + 1, contentLength) + '</span>';
                                 countStr++; // innerHTML textContent
                             } else {
                                 clearInterval(keyInterval);
