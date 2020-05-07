@@ -15,9 +15,26 @@
   max-width: 855px;
   width: 100%;
 }
-h1 {
+.page-title h1 {
   font-size: 30px;
 }
+
+/* The typing effect */
+
+.typewriter {
+  animation:
+          typing .5s ease-out;
+}
+
+@keyframes typing {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+/* The typewriter cursor effect */
+/*@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }*/
 
 /* page */
 
@@ -308,16 +325,28 @@ h1 {
   body {
     min-width: 650px;
   }
-  h1 {
-    text-align: center;
+  .page-title h1 {
+    text-align: left;
+  }
+  .page-title {
+    display: block;
+    margin: 0 auto;
+    max-width: 640px;
   }
   .content {
     display: block;
     margin: 0 auto;
     max-width: 640px;
   }
+  .container {
+    display: table;
+  }
   .r-sidebar {
-    display: none;
+    display: table-header-group;
+    float: unset;
+  }
+  .form-content {
+    margin-top: 20px;
   }
 }
 
@@ -337,12 +366,12 @@ h1 {
     margin: 0 auto;
   }
 
-  #form, h1 {
+  #form, .page-title h1 {
     max-width: 440px;
     width: 100%;
   }
 
-  h1 {
+  .page-title h1 {
     box-sizing: border-box;
     margin: 0.67em auto;
     padding: 0 10px;
@@ -351,6 +380,14 @@ h1 {
   .form__container, .form__container_footer {
     max-width: 400px;
     width: calc(100% - 40px);
+  }
+
+  .sidebar-content {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 10px;
+    max-width: 440px;
+    width: 100%;
   }
 
   .js-form__item__content-footer {

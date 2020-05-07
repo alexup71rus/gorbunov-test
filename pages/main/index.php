@@ -25,13 +25,13 @@ include __DIR__ . '/register.php';
     <noscript><div><img src="https://mc.yandex.ru/watch/62489518" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
 
-    <div class="container">
+    <div class="container page-title">
         <h1>Заявка на&nbsp;экскурсионный полёт на&nbsp;Марс</h1>
     </div>
 </header>
 <section id="form-registration">
     <div class="container">
-        <div class="content">
+        <div class="content form-content">
             <noscript>У Вас отключен javascript, некоторые функции сайта могут не работать.</noscript>
             <form action="" id="form">
                 <div class="form__container">
@@ -236,8 +236,10 @@ include __DIR__ . '/register.php';
             </form>
         </div>
         <div class="sidebar r-sidebar">
-            <h2 class="sidebar__title">Почему стабильно солнечное затмение?</h2>
-            <p>Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.</p>
+            <div class="content sidebar-content">
+                <h2 class="sidebar__title">Почему стабильно солнечное затмение?</h2>
+                <p class="typewriter">Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.</p>
+            </div>
         </div>
     </div>
 </section>

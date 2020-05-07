@@ -54,6 +54,22 @@
 
                     return element.value;
                 },
+                typewriter: function (objs, str) {
+                    objs.forEach(function (obj) {
+                        var countStr = 0;
+                        obj.textContent = '';
+                        var keyInterval = setInterval(function () {
+                            if (obj.textContent.length < str.length) {
+                                obj.textContent = str.substr(0, countStr+1) + '|';
+                                countStr++;
+                            } else {
+                                obj.textContent = str.substr(0, countStr+1);
+                                clearInterval(keyInterval);
+                            }
+
+                        }, 100);
+                    });
+                },
             },
             app = {
                 data: {
@@ -156,13 +172,14 @@
                         app.validateForm();
                     });
 
-                    // this.selectSelect(); // раскрытие селектов не работает в современных браузерах по соображениям безопасности
-
                     form.addEventListener("click", app.bindOnChange), form.addEventListener("keyup", app.bindOnChange);
 
                     this.restoreForm();
                     this.saveForm();
-                    // this.validateForm();
+                    helper.typewriter(
+                        document.querySelectorAll('.typewriter'),
+                        'Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.'
+                    );
 
                     for (var key in this.data.inputs) {
                         switch (key) {
@@ -585,28 +602,6 @@
 
                     app.data.inputs['marital-status'].innerHTML = itemsHTML;
                 },
-                // selectSelect: function (genderVal) { // раскрытие селектов не работает в современных браузерах по соображениям безопасности
-                //     var selectors = [],
-                //         items = document.querySelectorAll('.js-form__item');
-                //
-                //     items.forEach(function (item) {
-                //         var selects;
-                //         // selectors.push(item.querySelectorAll('select'));
-                //
-                //         if (selects = item.querySelectorAll('select')) {
-                //             item.addEventListener('mouseup', function (e) {
-                //                 if (e.target.classList.contains('js-form__item__label') || e.target.classList.contains('js-form__item')) {
-                //                     this.querySelectorAll('select').forEach(function (select) {
-                //                         console.log(select.value);
-                //                         if (!select.value) {
-                //                             select.click();
-                //                         }
-                //                     })
-                //                 }
-                //             });
-                //         }
-                //     });
-                // },
             };
 
         app.init();
