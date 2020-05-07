@@ -68,7 +68,7 @@
                             if (countStr < contentLength) {
                                 obj.innerHTML = str.substr(0, countStr + 1)
                                     + '<span style="color: white">' + str.substr(countStr + 1, contentLength) + '</span>';
-                                countStr++; // innerHTML textContent
+                                countStr++;
                             } else {
                                 clearInterval(keyInterval);
                             }
