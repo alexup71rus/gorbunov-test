@@ -447,7 +447,9 @@
                     app.data.inputs = app.serializeForm(form, true);
 
                     for (var input in app.data.inputs) {
-                        data[input] = app.data.inputs[input].value;
+                        if (!app.data.inputs[input].disabled) {
+                            data[input] = app.data.inputs[input].value;
+                        }
                     }
 
                     localStorage.setItem('fields', JSON.stringify(data));
