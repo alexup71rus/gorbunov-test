@@ -23,11 +23,12 @@
 
 .typewriter {
   animation:
-          typing 1.5s ease-out;
+          typing 1s ease-out;
 }
 
 @keyframes typing {
   from { opacity: 0 }
+  20% { opacity: 0 }
   to { opacity: 1 }
 }
 
