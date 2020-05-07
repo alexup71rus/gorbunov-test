@@ -23,7 +23,7 @@
 
 .typewriter {
   animation:
-          typing .5s ease-out;
+          typing 1.5s ease-out;
 }
 
 @keyframes typing {

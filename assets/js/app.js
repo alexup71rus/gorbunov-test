@@ -56,14 +56,19 @@
                 },
                 typewriter: function (objs, str) {
                     objs.forEach(function (obj) {
-                        var countStr = 0;
+                        var countStr = 0,
+                            keyInterval,
+                            height = obj.offsetHeight;
                         obj.textContent = '';
-                        var keyInterval = setInterval(function () {
+                        obj.style.display = 'block';
+                        obj.style.height = height + 'px';
+                        keyInterval = setInterval(function () {
                             if (obj.textContent.length < str.length) {
                                 obj.textContent = str.substr(0, countStr+1) + '|';
                                 countStr++;
                             } else {
                                 obj.textContent = str.substr(0, countStr+1);
+                                obj.style.height = 'auto';
                                 clearInterval(keyInterval);
                             }
 
