@@ -54,7 +54,7 @@
 
                     return element.value;
                 },
-                typewriter: function (objs) {
+                typewriter: function (objs, speed) {
                     objs.forEach(function (obj) {
                         var countStr = 1,
                             keyInterval,
@@ -62,7 +62,6 @@
                             str = obj.textContent;
                         // obj.textContent = '';
                         keyInterval = setInterval(function () {
-                            console.log(contentLength, countStr);
                             if (countStr < contentLength) {
                                 obj.innerHTML = str.substr(0, countStr + 1)
                                     + '<span style="color: white">' + str.substr(countStr + 1, contentLength) + '</span>';
@@ -71,7 +70,7 @@
                                 clearInterval(keyInterval);
                             }
 
-                        }, 100);
+                        }, speed);
                     });
                 },
             },
@@ -96,7 +95,7 @@
                     this.saveForm();
                     helper.typewriter(
                         document.querySelectorAll('.typewriter'),
-                        'Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.'
+                        50
                     );
 
                     this.bindForm(document.querySelector('#form'));
