@@ -56,7 +56,7 @@
                 },
                 typewriter: function (objs, speed) {
                     objs.forEach(function (obj) {
-                        var countStr = 1,
+                        var countStr = -1,
                             keyInterval,
                             contentLength = obj.textContent.length,
                             str = obj.textContent;
