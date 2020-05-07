@@ -84,6 +84,22 @@
                     gender: 'male',
                 },
                 init: function () { // старт программы
+                    this.data.inputs = this.serializeForm(form, true);
+
+                    form.addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        app.validateForm();
+                    });
+
+                    form.addEventListener("click", app.bindOnChange), form.addEventListener("keyup", app.bindOnChange);
+
+                    this.restoreForm();
+                    this.saveForm();
+                    helper.typewriter(
+                        document.querySelectorAll('.typewriter'),
+                        'Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.'
+                    );
+
                     this.bindForm(document.querySelector('#form'));
                 },
                 serializeForm: function (form, objects = false) { // сереализовать форму в объект или в массив имён
@@ -170,22 +186,6 @@
                 * привязка событий (и условия событий, не стал выносить)
                 */
                 bindForm: function (form) {
-                    this.data.inputs = this.serializeForm(form, true);
-
-                    form.addEventListener("submit", function (e) {
-                        e.preventDefault();
-                        app.validateForm();
-                    });
-
-                    form.addEventListener("click", app.bindOnChange), form.addEventListener("keyup", app.bindOnChange);
-
-                    this.restoreForm();
-                    this.saveForm();
-                    helper.typewriter(
-                        document.querySelectorAll('.typewriter'),
-                        'Эффективный диаметр жизненно вызывает случайный эффективный радиус, а время ожидания ответа составило бы 80 миллиардов лет.'
-                    );
-
                     for (var key in this.data.inputs) {
                         switch (key) {
                             case 'phone':
