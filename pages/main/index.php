@@ -8,6 +8,15 @@ include __DIR__ . '/register.php';
     'title' => 'Заявка на экскурсионный полёт на Марс',
 ]);
 ?>
+
+<noscript>
+    <style>
+        .typewriter {
+            display: block !important;
+        }
+    </style>
+</noscript>
+
 <header>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" async>

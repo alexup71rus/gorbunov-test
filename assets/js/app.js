@@ -60,8 +60,11 @@
                             keyInterval,
                             contentLength = obj.textContent.length,
                             str = obj.textContent;
-                        // obj.textContent = '';
+
                         keyInterval = setInterval(function () {
+                            if (countStr < 0) {
+                                obj.style.display = 'block';
+                            }
                             if (countStr < contentLength) {
                                 obj.innerHTML = str.substr(0, countStr + 1)
                                     + '<span style="color: white">' + str.substr(countStr + 1, contentLength) + '</span>';
