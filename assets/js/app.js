@@ -327,15 +327,6 @@
                                 });
                                 break;
 
-                            case 'birthdate-days':
-                                // app.showError(this, [
-                                //     {
-                                //         result: (!app.data.inputs['birthdate-days'].value),
-                                //         text: 'Поле не заполнено'
-                                //     },
-                                // ]);
-                                break;
-
                             case 'birthdate-months':
                             case 'birthdate-years':
                                 this.data.inputs[key].addEventListener("change", function (e) {
@@ -456,9 +447,6 @@
                     app.data.inputs = app.serializeForm(form, true);
 
                     for (var input in app.data.inputs) {
-                        if (clear === true) {
-                            app.data.inputs[input].value = '';
-                        }
                         data[input] = app.data.inputs[input].value;
                     }
 
@@ -470,7 +458,7 @@
                     try {
                         fields = JSON.parse(fieldsJson);
                     } catch (e) {
-                        console.log('Вы зашли на эту страницу впервые?');
+                        console.info('Вы зашли на эту страницу впервые?');
                     }
 
                     for (var input in app.data.inputs) {
@@ -545,10 +533,9 @@
                                 document.querySelector('.js-form__item__content-footer_success').classList.remove('hidden');
                                 document.querySelector('#error-exeption').innerText = '';
                                 document.querySelector('.js-form__item__content-footer').classList.remove('js-error');
-                                app.saveForm(true);
+                                localStorage.setItem('fields', '{}');
                                 for (var input in app.data.inputs) {
                                     app.data.inputs[input].disabled = true;
-                                    console.log(app.data.inputs[input]);
                                 }
                                 document.querySelector('[name="gender"]').disabled = true;
                                 document.querySelector('#form-item-cln-chk').disabled = true;
