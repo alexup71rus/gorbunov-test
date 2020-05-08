@@ -41,7 +41,6 @@ include __DIR__ . '/register.php';
 <section id="form-registration">
     <div class="container">
         <div class="content form-content">
-            <noscript>У Вас отключен javascript, некоторые функции сайта могут не работать.</noscript>
             <form action="" id="form">
                 <div class="form__container">
                     <div class="js-form__item-container">

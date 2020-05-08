@@ -219,12 +219,12 @@
   background-image: -o-linear-gradient(#EFEEF3, #E3E3E9);
 }
 
-.js-submit-disibled {
+.js-submit-disabled {
   background: #dedee4 !important;
   color: #A1A2A7 !important;
   pointer-events: none !important;
 }
-.js-submit-disibled::before {
+.js-submit-disabled::before {
   background-image: linear-gradient(#EFEEF3, #E3E3E9) !important;
   background-image: -webkit-linear-gradient(#EFEEF3, #E3E3E9) !important;
   background-image: -moz-linear-gradient(#EFEEF3, #E3E3E9) !important;

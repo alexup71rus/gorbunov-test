@@ -131,7 +131,8 @@
                 showError: function (elem, arValidFields = {}) {
                     var elItem = elem.closest(".js-form__item"),
                         elError,
-                        wrong = false;
+                        wrong = false,
+                        wrongText = '';
 
                     if (elItem) {
                         elError = elItem.querySelector(".js-field-error")
@@ -140,14 +141,17 @@
                     if (elItem && elError && arValidFields) {
                         for (var item in arValidFields) {
                             if (arValidFields[item].result === true) {
-                                wrong = arValidFields[item].text;
+                                wrong = true;
+                                wrongText = arValidFields[item].text;
                             }
                         }
 
                         if (wrong) {
-                            elem.classList.add('js-wrong');
-                            elItem.classList.add('js-error');
-                            elError.innerText = wrong;
+                            if (wrongText) {
+                                elem.classList.add('js-wrong');
+                                elItem.classList.add('js-error');
+                                elError.innerText = wrongText;
+                            }
                             app.data.invalidFields[elem.getAttribute('name')] = false;
                             return false;
                         } else {
@@ -176,9 +180,9 @@
                     }
 
                     if (allInputsValid === true) {
-                        document.querySelector('.js-form__item__submit').classList.remove('js-submit-disibled');
+                        document.querySelector('.js-form__item__submit').classList.remove('js-submit-disabled');
                     } else {
-                        document.querySelector('.js-form__item__submit').classList.add('js-submit-disibled');
+                        document.querySelector('.js-form__item__submit').classList.add('js-submit-disabled');
                     }
 
                     app.saveForm();
@@ -227,6 +231,14 @@
                                 break;
 
                             case 'email':
+                                this.data.inputs[key].addEventListener("keyup", function (e) {
+                                    app.showError(this, [
+                                        {
+                                            result: ( (this.value.length > 0) && !/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g.test(this.value.toLowerCase().normalize('NFC'))),
+                                            text: ''
+                                        },
+                                    ]);
+                                });
                                 this.data.inputs[key].addEventListener("blur", function (e) {
                                     app.showError(this, [
                                         {
