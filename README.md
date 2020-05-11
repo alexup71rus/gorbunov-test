@@ -1,29 +1,18 @@
-# README #
+Тест от [Бюро Горбунова](https://bureau.ru/)
+Этот тест был пройдет мной во время работы в компании [Intensa](http://intensa.ru/).
 
-This README would normally document whatever steps are necessary to get your application up and running.
+### Краткое описание задания ###
 
-### What is this repository for? ###
+Задача: необходимо организовать запись на экскурсионный полёт на Марс через новую форму на сайте —
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Если фамилия участника ранее менялась, дополнительно заполняется предыдущая. Поля валидируются на клиентской стороне, информация об ошибках выводится сразу после их совершения. Латиница заполняется автоматически из кириллицы. Пол определяется автоматически из ФИО. Частично заполненная форма сохраняется в браузере и не очищается при перезагрузке страницы. Поля появляются и исчезают с плавной анимацией.
 
-### How do I get set up? ###
+Отправленные через форму заявки сохраняются в базе и отправляются администратору по электронной почте. Нужно предусмотреть страницу, где будет выведен список отправленных заявок (её вид — на усмотрение разработчиков).
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Форма должна корректно работать на мобильных устройствах.
 
-### Contribution guidelines ###
+Важно, чтобы форма была хорошо свёрстана с точки зрения сео.
 
-* Writing tests
-* Code review
-* Other guidelines
+Необходимо также собирать статистику использования формы: сколько времени занимает заполнение формы, как часто люди допускают ошибки при заполнении, какая конверсия.
 
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+[Спецификация](https://docs.google.com/document/d/1t7HQi9ZymQkqQYsQpLkFb89NwaWZtTKr2I8oD8NUalU/edit?usp=sharing)
