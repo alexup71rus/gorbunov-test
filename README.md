@@ -1,5 +1,6 @@
 [Тест от Бюро Горбунова](https://bureau.ru/about/development/).
 Этот тест был пройдет мной во время работы в компании [Intensa](http://intensa.ru/).
+[Результат](http://bureau.intensa-dev.ru/)
 
 ### Краткое описание задания ###
 
